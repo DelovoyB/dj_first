@@ -2,9 +2,13 @@ name: Django CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - dev
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - dev
 
 jobs:
   test:
@@ -26,4 +30,4 @@ jobs:
 
     - name: Run tests
       run: |
-        python manage.py test
+        python manage.py test --settings=dj.test_settings
