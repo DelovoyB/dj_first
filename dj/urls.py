@@ -21,13 +21,15 @@ from django.urls import include,path
 from dj.settings import DEBUG
 import debug_toolbar
 
+from dj.settings import is_running_tests
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls', namespace='main')),
     path('catalog/', include('goods.urls', namespace='catalog'))
 ]
 
-if DEBUG:
+if DEBUG and not is_running_tests():
     urlpatterns += [
         path('__debug__/', include(debug_toolbar.urls)),
     ]
