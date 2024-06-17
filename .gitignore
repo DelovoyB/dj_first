@@ -1,2 +1,8 @@
 templates-for-Django-4-course-Home-main/
 .idea/
+venv/
+**/__pycache__/
+.pylintrc
+.vscode/
+media/
+db.sqlite3
