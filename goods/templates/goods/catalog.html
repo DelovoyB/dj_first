@@ -49,7 +49,7 @@
                                     <img src="{% static "deps/images/Not found image.png" %}" class="card-img-top" alt="...">
                                 {% endif %}
                                 <div class="card-body">
-                                    <a href="../goods/product.html">
+                                    <a href="{% url 'catalog:product' product.slug %}">
                                         <p class="card-title">{{product.name}}</p>
                                     </a>
                                     <p class="card-text text-truncate">{{product.description}}</p>
@@ -78,14 +78,21 @@
 <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center my-4">
                             <div class="custom-shadow d-flex">
-                                <li class="page-item disabled">
-                                  <a class="page-link">Previous</a>
+                                <li class="page-item {% if not goods.has_previous %}disabled{% endif %}">
+                                  <a class="page-link" href="{% if goods.has_previous %}
+                                    ?page={{ goods.previous_page_number }}
+                                    {% else %}#{% endif %}"><</a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                  <a class="page-link" href="#">Next</a>
+                                {% for page in goods.paginator.page_range %}
+                                    {% if page >= goods.number|add:"-2" and page <= goods.number|add:"2" %}
+                                    	<li class="page-item"><a class="page-link {% if goods.number == page %} fw-bold text-black disabled {% endif %}" href="?page={{ page }}">{{ page }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                <li class="page-item {% if not goods.has_next %}disabled{% endif %}">
+                                  <a class="page-link" href="{% if goods.has_next %}
+                                    ?page={{ goods.next_page_number }}
+                                    {% else %}#{% endif %}">></a>
                                 </li>
                             </div>
                         </ul>
