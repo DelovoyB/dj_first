@@ -2,11 +2,11 @@
 $(document).ready(function () {
     // Берем из разметки элемент по id - оповещения от django
     var notification = $('#notification');
-    // И через 7 сек. убираем
+    // И через 3 сек. убираем
     if (notification.length > 0) {
         setTimeout(function () {
             notification.alert('close');
-        }, 7000);
+        }, 3000);
     }
 
     // При клике по значку корзины открываем всплывающее(модальное) окно
