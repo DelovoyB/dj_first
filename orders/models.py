@@ -18,7 +18,7 @@ class OrderitemQueryset(models.QuerySet):
 class Order(models.Model):
 
     user = models.ForeignKey(to=User, on_delete=models.SET_DEFAULT, blank=True, null=True, verbose_name='Пользователь', default=None)
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания заказа')
+    created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания заказа')
     phone_number = models.CharField(max_length=20, verbose_name='Номер телефона')
     requires_delivery = models.BooleanField(default=False, verbose_name='Требуется доставка')
     delivery_address = models.TextField(blank=True, null=True, verbose_name='Адрес доставки')
