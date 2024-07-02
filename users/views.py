@@ -31,6 +31,9 @@ def login(request):
                 messages.success(request, f'Вы успешно вошли в аккаунт {username}')
 
                 if session_key:
+                    forgot_carts = Cart.objects.filter(user=user)
+                    if forgot_carts.exists():
+                        forgot_carts.delete()
                     Cart.objects.filter(session_key=session_key).update(user=user)
 
                 redirect_page = request.POST.get('next', None)
