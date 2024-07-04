@@ -2,9 +2,9 @@
 {% load static %}
 {% load goods_tags %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
-{% endblock %}
+{#{% block css %}#}
+{#<link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">#}
+{#{% endblock %}#}
 
 {% block modal_cart %}
 {% include "includes/cart_button.html" %}
@@ -105,19 +105,19 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center my-4">
         <div class="custom-shadow d-flex">
-            <li class="page-item {% if not goods.has_previous %}disabled{% endif %}">
-                <a class="page-link" href="{% if goods.has_previous %}
-                                   ?{% change_params page=goods.previous_page_number %}
+            <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                <a class="page-link" href="{% if page_obj.has_previous %}
+                                   ?{% change_params page=page_obj.previous_page_number %}
                                    {% else %}#{% endif %}"><</a>
             </li>
-            {% for page in goods.paginator.page_range %}
-                {% if page >= goods.number|add:"-2" and page <= goods.number|add:"2" %}
-                    <li class="page-item"><a class="page-link {% if goods.number == page %} fw-bold text-black disabled {% endif %}" href="?{% change_params page=page %}">{{ page }}</a></li>
+            {% for page in page_obj.paginator.page_range %}
+                {% if page >= page_obj.number|add:"-2" and page <= page_obj.number|add:"2" %}
+                    <li class="page-item"><a class="page-link {% if page_obj.number == page %} fw-bold text-black disabled {% endif %}" href="?{% change_params page=page %}">{{ page }}</a></li>
                 {% endif %}
             {% endfor %}
-            <li class="page-item {% if not goods.has_next %}disabled{% endif %}">
-                <a class="page-link" href="{% if goods.has_next %}
-                                   ?{% change_params page=goods.next_page_number %}
+            <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                <a class="page-link" href="{% if page_obj.has_next %}
+                                   ?{% change_params page=page_obj.next_page_number %}
                                    {% else %}#{% endif %}">></a>
             </li>
         </div>
