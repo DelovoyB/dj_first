@@ -24,6 +24,44 @@ class AboutView(TemplateView):
         return context
 
 
+class Index1View(TemplateView):
+    template_name = 'main/index1.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Main page'
+        return context
+
+
+class About1View(TemplateView):
+    template_name = 'main/about1.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'About us'
+        return context
+
+
+class ContactView(TemplateView):
+    template_name = 'main/contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Contact us'
+        return context
+
+
+class FaqView(TemplateView):
+    template_name = 'main/faq.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'FAQ'
+        return context
+
+
+
+
 # def about(request):
 #     context = {
 #         'title': 'О нас'
