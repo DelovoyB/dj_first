@@ -13,7 +13,7 @@ $(document).ready(function () {
         var cartCount = parseInt(goodsInCartCount.text() || 0);
 
         // Получаем id товара из атрибута data-product-id
-        var product_id = $(this).data("product-id");
+        var product_id = this.getAttribute('data-product-id');
 
         // Из атрибута href берем ссылку на контроллер django
         var add_to_cart_url = $(this).attr("href");

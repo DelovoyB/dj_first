@@ -1,0 +1,110 @@
+{% extends "base1.html" %}
+{% load static %}
+{% load goods_tags %}
+
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
+{% block content %}
+    <!-- Start Item Details -->
+    <section class="item-details section">
+        <div class="container">
+            <div class="top-area">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="product-images">
+                            <main id="gallery">
+                                <div class="main-img">
+                                    {% if product.image %}
+                                    <img style="cursor: default" src="{{ product.image.url }}" alt="{{product.name}}">
+                                    {% else %}
+                                    <img src="https://via.placeholder.com/1000x670" id="current" alt="#">
+                                    {% endif %}
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="product-info">
+                            <h2 class="title">{{ product.name }}</h2>
+                            <p class="category"><i class="lni lni-tag"></i> Category:<a href="{% url 'catalog:index1' product.category.slug %}">{{ product.category }}</a></p>
+                            <h3 class="price">$
+                                {% if product.discount %}
+                                {{ product.sell_price }}
+                                <span>${{ product.price }}</span>
+                                {% else %}
+                                {{ product.price }}
+                                {% endif %}
+                            </h3>
+                            <p class="info-text">{{ product.description }}</p>
+                            <div class="bottom-content">
+                                <div class="row align-items-end">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="button cart-button">
+                                            <button href="{% url 'cart:cart_add' %}" class="btn add-to-cart"
+                                               data-product-id="{{ product.id }}" style="width: 100%;">
+                                                {% csrf_token %}
+                                                <i class="lni lni-cart"></i>Add to Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Item Details -->
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+
+        // Create a form element
+
+        function sendValueToController(){
+            const form = document.createElement('form');
+            form.action = document.getElementById('order_by').getAttribute('data-url');
+            form.method = 'GET';
+
+            // Create a hidden input element for each parameter
+            const order_by = document.createElement('input');
+            order_by.type = 'hidden';
+            order_by.name = 'order_by';
+            order_by.value = $('#order_by').val();
+
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            const paramValue = params.get('q');
+
+            if (paramValue) {
+                const q = document.createElement('input');
+                q.type = 'hidden';
+                q.name = 'q';
+                q.value = paramValue;
+                form.appendChild(q);
+            }
+
+            if (document.getElementById('flexCheckDefault1').checked) {
+                const on_sale = document.createElement('input');
+                on_sale.type = 'hidden';
+                on_sale.name = 'on_sale';
+                on_sale.value = 'on';
+                form.appendChild(on_sale);
+            }
+
+            form.appendChild(order_by);
+            document.body.appendChild(form);
+
+            // Submit the form
+            form.submit();
+
+        }
+    </script>
+{% endblock %}

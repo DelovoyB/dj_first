@@ -17,7 +17,7 @@
                     <!-- Start Main Menu Search -->
                     <div class="main-menu-search">
                         <!-- navbar search start -->
-                        <form class="navbar-search search-style-5" role="search" action="{% url 'catalog:search' %}" method="get">
+                        <form class="navbar-search search-style-5" role="search" action="{% url 'catalog:new_search' %}" method="get">
                             <div class="search-input">
                                 <input type="search" name="q" placeholder="Search" aria-label="Search">
                             </div>
@@ -58,7 +58,7 @@
                             {% tag_categories as categories %}
                             {% for category in categories %}
 
-                                <li><a href="{% url "catalog:index" category.slug %}">{{ category.name }}</a></li>
+                                <li><a href="{% url "catalog:index1" category.slug %}">{{ category.name }}</a></li>
 
                             {% endfor %}
                         </ul>
@@ -96,7 +96,7 @@
                                 </li>
                                 {% else %}
                                 <li class="nav-item">
-                                    <a class="dd-menu collapsed" href="{% url "user:profile" %}" data-bs-toggle="collapse"
+                                    <a class="dd-menu collapsed" href="{% url "user:profile" %}" data-bs-hover="collapse"
                                        data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent"
                                        aria-expanded="false" aria-label="Toggle navigation">My Profile</a>
                                     <ul class="sub-menu collapse" id="submenu-1-3">

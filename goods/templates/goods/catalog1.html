@@ -1,0 +1,187 @@
+{% extends "base1.html" %}
+{% load static %}
+{% load goods_tags %}
+
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
+{% block content %}
+    <!-- Start Product Grids -->
+    <section class="product-grids section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12">
+                    <!-- Start Product Sidebar -->
+                    <div class="product-sidebar">
+                        <!-- Start Single Widget -->
+                        <div class="single-widget search">
+                            <h3>Search Product</h3>
+                            <form role="search" action="{% url 'catalog:new_search' %}" method="get">
+                                <input type="search" name="q" placeholder="Search Here..." aria-label="Search">
+                                <button type="submit" class="search-btn"><i class="lni lni-search-alt"></i></button>
+                            </form>
+                        </div>
+                        <!-- End Single Widget -->
+                        <div class="single-widget">
+                            <div class="product-sorting">
+                                <h3>Sort by:</h3>
+                                <select onchange="sendValueToController()" id="order_by" data-url="{% if request.GET.q %}{% url "catalog:new_search" %}{% else %}{% url "catalog:index1" slug_url %}{% endif %}" class="form-control" style="
+                                background-position: center right 17px;
+                                background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE4NS4zNDQgMTg1LjM0NCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg1LjM0NCAxODUuMzQ0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTkyLjY3MiwxNDQuMzczYy0yLjc1MiwwLTUuNDkzLTEuMDQ0LTcuNTkzLTMuMTM4TDMuMTQ1LDU5LjMwMWMtNC4xOTQtNC4xOTktNC4xOTQtMTAuOTkyLDAtMTUuMTggICAgYzQuMTk0LTQuMTk5LDEwLjk4Ny00LjE5OSwxNS4xOCwwbDc0LjM0Nyw3NC4zNDFsNzQuMzQ3LTc0LjM0MWM0LjE5NC00LjE5OSwxMC45ODctNC4xOTksMTUuMTgsMCAgICBjNC4xOTQsNC4xOTQsNC4xOTQsMTAuOTgxLDAsMTUuMThsLTgxLjkzOSw4MS45MzRDOTguMTY2LDE0My4zMjksOTUuNDE5LDE0NC4zNzMsOTIuNjcyLDE0NC4zNzN6IiBmaWxsPSIjNTA1MDUwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
+                                background-repeat: no-repeat;
+                                background-size: 10px 10px;">
+                                    <option name="order_by" value="default" {% if not request.GET.order_by or request.GET.order_by == 'default' %}selected="selected"{% endif %}>Popularity</option>
+                                    <option name="order_by" value="price" {% if request.GET.order_by == 'price' %}selected="selected"{% endif %}>Low - High Price</option>
+                                    <option name="order_by" value="-price" {% if request.GET.order_by == '-price' %}selected="selected"{% endif %}>High - Low Price</option>
+                                    <option name="order_by" value="name" {% if request.GET.order_by == 'name' %}selected="selected"{% endif %}>A - Z Order</option>
+                                    <option name="order_by" value="-name" {% if request.GET.order_by == '-name' %}selected="selected"{% endif %}>Z - A Order</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Start Single Widget -->
+                        <div class="single-widget condition">
+                            <h3>Condition</h3>
+                            <div class="form-check">
+                                <input onchange="sendValueToController()" class="form-check-input" type="checkbox"
+                                       value="on" id="flexCheckDefault1" {% if request.GET.on_sale %}checked{% endif %}>
+                                <label class="form-check-label" for="flexCheckDefault1">
+                                    On Sale
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <!-- End Product Sidebar -->
+                </div>
+                <div class="col-lg-9 col-12">
+                    <div class="product-grids-head">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
+                                aria-labelledby="nav-grid-tab">
+                                <div id='products_grid' class="row">
+                                    {% for product in goods%}
+                                    <div class="col-lg-4 col-md-6 col-12">
+                                        <!-- Start Single Product -->
+                                        <div class="single-product" style="margin-bottom: 30px; margin-top: 0;">
+                                            <div class="product-image">
+                                                {% if product.image %}
+                                                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                                                {% else %}
+                                                    <img src="https://via.placeholder.com/335x335" alt="#">
+                                                {% endif %}
+                                                {% if product.discount %}
+                                                <span class="sale-tag">-{{ product.discount }}%</span>
+                                                {% endif %}
+                                                <div class="button">
+                                                    <a href="{% url 'cart:cart_add' %}" class="btn add-to-cart" data-product-id="{{ product.id }}">
+                                                        {% csrf_token %}
+                                                        <i class="lni lni-cart"></i>Add to Cart</a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <span class="category">{{product.category}}</span>
+                                                <h4 class="title">
+                                                    <a href="{% url 'catalog:product1' product.slug %}">
+                                                        {% autoescape off %}
+                                                            {% if product.headline %}
+                                                                {{product.headline}}
+                                                            {% else %}
+                                                                {{product.name}}
+                                                            {% endif %}
+                                                        {% endautoescape %}
+                                                    </a>
+                                                </h4>
+                                                <div class="price">
+                                                    <span>${{product.sell_price}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Single Product -->
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <!-- Pagination -->
+                                        <div class="pagination left">
+                                            <ul class="pagination-list">
+                                                <li class="page-item {% if not page_obj.has_previous %}disabled pe-none{% endif %}">
+                                                    <a class="page-link" href="{% if page_obj.has_previous %}
+                                                    ?{% change_params page=page_obj.previous_page_number %}
+                                                    {% else %}#{% endif %}">
+                                                        <i class="lni lni-chevron-left"></i></a></li>
+                                                {% for page in page_obj.paginator.page_range %}
+                                                    {% if page >= page_obj.number|add:"-2" and page <= page_obj.number|add:"2" %}
+                                                        <li class="page-item {% if page_obj.number == page %} active disabled {% endif %}"><a class="page-link" href="?{% change_params page=page %}">{{ page }}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <li class="page-item {% if not page_obj.has_next %}disabled pe-none{% endif %}">
+                                                    <a class="page-link" href="{% if page_obj.has_next %}
+                                                    ?{% change_params page=page_obj.next_page_number %}
+                                                    {% else %}#{% endif %}">
+                                                        <i class="lni lni-chevron-right"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <!--/ End Pagination -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Product Grids -->
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+
+        // Create a form element
+
+        function sendValueToController(){
+            const form = document.createElement('form');
+            form.action = document.getElementById('order_by').getAttribute('data-url');
+            form.method = 'GET';
+
+            // Create a hidden input element for each parameter
+            const order_by = document.createElement('input');
+            order_by.type = 'hidden';
+            order_by.name = 'order_by';
+            order_by.value = $('#order_by').val();
+
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            const paramValue = params.get('q');
+
+            if (paramValue) {
+                const q = document.createElement('input');
+                q.type = 'hidden';
+                q.name = 'q';
+                q.value = paramValue;
+                form.appendChild(q);
+            }
+
+            if (document.getElementById('flexCheckDefault1').checked) {
+                const on_sale = document.createElement('input');
+                on_sale.type = 'hidden';
+                on_sale.name = 'on_sale';
+                on_sale.value = 'on';
+                form.appendChild(on_sale);
+            }
+
+            form.appendChild(order_by);
+            document.body.appendChild(form);
+
+            // Submit the form
+            form.submit();
+
+        }
+    </script>
+{% endblock %}
