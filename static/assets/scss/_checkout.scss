@@ -34,17 +34,17 @@
             color: $black
         }
 
-        &:before {
-            position: absolute;
-            top: 50%;
-            right: 16px;
-            transform: translateY(-50%);
-            font-family: "Lineicons";
-            content: "\ea5e";
-            font-size: 13px;
-            color: #7D7D7D;
-            transition: all 0.3s linear;
-        }
+        //&:before {
+        //    position: absolute;
+        //    top: 50%;
+        //    right: 16px;
+        //    transform: translateY(-50%);
+        //    font-family: "Lineicons";
+        //    content: "\ea5e";
+        //    font-size: 13px;
+        //    color: #7D7D7D;
+        //    transition: all 0.3s linear;
+        //}
     }
 
     .checkout-steps-form-content {

@@ -10,31 +10,12 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Главная'
-        context['content'] = 'Магазин мебели HOME'
+        context['title'] = 'Main page'
         return context
 
 
 class AboutView(TemplateView):
     template_name = 'main/about.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'О нас'
-        return context
-
-
-class Index1View(TemplateView):
-    template_name = 'main/index1.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Main page'
-        return context
-
-
-class About1View(TemplateView):
-    template_name = 'main/about1.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

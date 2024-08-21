@@ -47,7 +47,7 @@ class UserLoginView(LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Авторизация'
+        context['title'] = 'Sign in'
         return context
 
 
@@ -72,7 +72,7 @@ class UserRegistrationView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Регистрация'
+        context['title'] = 'Sign up'
         return context
 
 
@@ -95,7 +95,7 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Профиль'
+        context['title'] = 'Profile'
         context['orders'] = Order.objects.filter(user=self.request.user).prefetch_related(
                 Prefetch(
                     "orderitem_set",
@@ -106,7 +106,15 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
 
 
 class UserCartView(TemplateView):
+
     template_name = 'users/users_cart.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Cart'
+        context['disable_modal_cart'] = True
+
+        return context
 
 
 @login_required

@@ -1,105 +1,164 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% load carts_tags %}
 
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
 {% block content %}
-    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+    {% user_carts request as carts %}
+    <!--====== Checkout Form Steps Part Start ======-->
+    <section class="checkout-wrapper section">
         <div class="container">
-            <h3 class="text-center mb-4">Выбранные товары</h3>
-            <div class="container" id="cart-items-container">
-                <!-- Разметка корзины -->
-                {% user_carts request as carts %}
-                {% include 'carts/includes/included_cart.html' %}
-                <!-- Закончилась разметка корзины -->
-            </div>
-        </div>
-        <!-- Детали заказа -->
-        <div class="container">
-            <h3 class="text-center">Детали заказа</h3>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <form action="{% url 'orders:create_order' %}" method="post" id="create_order_form">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="id_first_name" class="form-label">Имя*:</label>
-                                <input type="text" class="form-control" id="id_first_name"
-                                       value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
-                                       name="first_name" required>
-                                {% if form.first_name.errors %}
-                                <div class="alert alert-danger alert-dismissible fade show">{{ form.first_name.errors }}</div>
-                                {% endif %}
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="id_last_name" class="form-label">Фамилия*:</label>
-                                <input type="text" class="form-control" id="id_last_name" name="last_name"
-                                       value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}"
-                                       required>
-                                {% if form.last_name.errors %}
-                                <div class="alert alert-danger alert-dismissible fade show">{{ form.last_name.errors }}</div>
-                                {% endif %}
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="id_phone_number" class="form-label">Номер телефона*:</label>
-                                <input type="text" class="form-control" id="id_phone_number" name="phone_number"
-                                       value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}"
-                                       placeholder="(000) 000-0000"
-                                       required>
-                                {% if form.phone_number.errors %}
-                                <div class="alert alert-danger alert-dismissible fade show">{{ form.phone_number.errors }}</div>
-                                {% endif %}
-                                <div class="alert alert-danger alert-dismissible fade show"
-                                    style="display: none;"
-                                    id="phone_number_error">Неверный формат телефона</div>
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="delivery" class="form-label">Способ доставки: </label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="requires_delivery"
-                                           id="id_requires_delivery" value="1" checked>
-                                    <label class="form-check-label" for="id_requires_delivery">Нужна
-                                        доставка</label>
+            <form action="{% url 'orders:create_order' %}" method="post" id="create_order_form" class="row justify-content-center">
+                {% csrf_token %}
+                <div class="col-lg-8">
+                    <div class="checkout-steps-form-style-1">
+                        <h6 class="title">Your Personal Details</h6>
+                        <section class="checkout-steps-form-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="single-form form-default">
+                                        <label>User Name</label>
+                                        <div class="row">
+                                            <div class="col-md-6 form-input form">
+                                                <input id="id_first_name" type="text" placeholder="First Name"
+                                                value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
+                                                name="first_name" required>
+                                            {% if form.first_name.errors %}
+                                            <div class="alert alert-danger alert-dismissible fade show">{{ form.first_name.errors }}</div>
+                                            {% endif %}
+                                            </div>
+                                            <div class="col-md-6 form-input form">
+                                                <input id="id_last_name" name="last_name"
+                                                value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}"
+                                                required type="text" placeholder="Last Name">
+                                            {% if form.last_name.errors %}
+                                            <div class="alert alert-danger alert-dismissible fade show">{{ form.last_name.errors }}</div>
+                                            {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="requires_delivery"
-                                           id="id_requires_delivery" value="0">
-                                    <label class="form-check-label" for="id_requires_delivery">Самовывоз</label>
+                                <div class="col-md-6">
+                                    <div class="single-form form-default">
+                                        <label>Phone Number</label>
+                                        <div class="form-input form">
+                                            <input id="id_phone_number" name="phone_number"
+                                            value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}"
+                                            placeholder="(000) 000-0000"
+                                            required type="text">
+                                            {% if form.phone_number.errors %}
+                                            <div class="alert alert-danger alert-dismissible fade show">{{ form.phone_number.errors }}</div>
+                                            {% endif %}
+                                            <div class="alert alert-danger alert-dismissible fade show"
+                                                style="display: none;"
+                                                id="phone_number_error">Неверный формат телефона</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="single-checkbox checkbox-style-1">
+                                        <input onchange="mailing_check()" type="checkbox"
+                                           id="id_requires_delivery">
+                                        <label for="id_requires_delivery"><span></span></label>
+                                        <input id="id_requires_delivery2" type="hidden" name="requires_delivery" value="1">
+                                        <p>I will pick up the order myself.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="mailing">
+                                    <div class="single-form form-default" id="deliveryAddressField">
+                                        <label>Mailing Address</label>
+                                        <div class="form-input form">
+                                            <input id="id_delivery_address" name="delivery_address"
+                                            type="text" placeholder="Mailing Address"
+                                            value="{% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %}">
+                                            {% if form.delivery_address.errors %}
+                                            <div class="alert alert-danger alert-dismissible fade show">{{ form.delivery_address.errors }}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="single-checkbox checkbox-style-1">
+                                        <input type="radio" name="payment_on_get" id="id_payment_on_get" value="0" checked>
+                                        <label for="radio-1"><span></span></label>
+                                        <p>Pay now</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="single-checkbox checkbox-style-1">
+                                        <input type="radio" name="payment_on_get" id="id_payment_on_get" value="1">
+                                        <label for="radio-2"><span></span></label>
+                                        <p>Pay on get</p>
+                                        {% if form.payment_on_get.errors %}
+                                        <div class="alert alert-danger alert-dismissible fade show">{{ form.payment_on_get.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="single-checkbox checkbox-style-2">
+                                        <input onchange="btn_check()" type="checkbox" id="checkbox-2">
+                                        <label for="checkbox-2"><span></span></label>
+                                        <p>I accept the <span class="text-primary" style="cursor: pointer;">terms and conditions</span>.</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mb-3" id="deliveryAddressField">
-                                <label for="id_delivery_address" class="form-label">Адрес
-                                    доставки*:</label>
-                                <textarea class="form-control" id="id_delivery_address"
-                                          name="delivery_address"
-                                          value="{% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %}"
-                                          rows="2"></textarea>
-                                {% if form.delivery_address.errors %}
-                                <div class="alert alert-danger alert-dismissible fade show">{{ form.delivery_address.errors }}</div>
-                                {% endif %}
+                        </section>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="checkout-sidebar">
+                        <div class="checkout-sidebar-price-table mt-30">
+                            <h5 class="title">Pricing Table</h5>
+
+                            <div class="sub-total-price">
+                                <div class="total-price">
+                                    <p class="value">Subotal Price:</p>
+                                    <p class="price">${{ carts.total_price }}</p>
+                                </div>
+                                <div class="total-price shipping">
+                                    <p class="value">Shipping Price:</p>
+                                    <p class="price">$0.00</p>
+                                </div>
                             </div>
-                            <div class="col-md-12 mb-3">
-                                <label class="form-label">Способ оплаты: </label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="payment_on_get"
-                                           id="id_payment_on_get" value="0" checked>
-                                    <label class="form-check-label" for="id_payment_on_get">Оплата
-                                        картой</label>
+
+                            <div class="total-payable">
+                                <div class="payable-price">
+                                    <p class="value">Total Price:</p>
+                                    <p class="price">${{ carts.total_price }}</p>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="payment_on_get"
-                                           id="id_payment_on_get" value="1">
-                                    <label class="form-check-label" for="id_payment_on_get">Наличными/картой
-                                        при получении</label>
-                                    {% if form.payment_on_get.errors %}
-                                    <div class="alert alert-danger alert-dismissible fade show">{{ form.payment_on_get.errors }}</div>
-                                    {% endif %}
-                                </div>
+                            </div>
+                            <div class="price-table-btn button">
+                                <button id="create-order-btn" type="submit" class="btn btn-alt disabled">Create order</button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-dark">Оформить заказ</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </div>
+    </section>
+    <!--====== Checkout Form Steps Part Ends ======-->
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+      function btn_check() {
+        document.getElementById("create-order-btn").classList.toggle("disabled");
+      }
+      function mailing_check() {
+        document.getElementById("mailing").classList.toggle("d-none");
+        if (document.getElementById("id_requires_delivery").checked) {
+          document.getElementById("id_requires_delivery2").value = 0;
+        }
+        else {
+          document.getElementById("id_requires_delivery2").value = 1;
+        }
+      }
+    </script>
 {% endblock %}

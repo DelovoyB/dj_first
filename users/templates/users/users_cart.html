@@ -1,14 +1,17 @@
-{% extends  "base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% load carts_tags %}
 
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
 {% block content %}
-{% user_carts request as carts %}
-<div class="row">
+    {% user_carts request as carts %}
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
-                <h3 class="text-center mb-4">Корзина</h3>
+                <h3 class="text-center mb-4">Cart</h3>
                 <div class="container" id="cart-items-container">
                     <!-- Разметка корзины -->
                     {% include "carts/includes/included_cart.html" %}
@@ -17,5 +20,8 @@
             </div>
         </div>
     </div>
-</div>
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
 {% endblock %}

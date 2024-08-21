@@ -33,6 +33,13 @@ Index Of css
     Normalize CSS
 ========================================*/
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+/*@font-face {*/
+/*  font-family: "Manrope";*/
+/*  src: url('../fonts/Manrope-Regular.woff2') format('woff2'),*/
+/*       url('../fonts/Manrope-Regular.woff') format('woff');*/
+/*  font-weight: normal;*/
+/*  font-style: normal;*/
+/*}*/
 html {
   scroll-behavior: smooth;
 }
@@ -6562,19 +6569,19 @@ blockquote span {
   color: #081828;
 }
 
-.checkout-steps-form-style-1 .title:before {
-  position: absolute;
-  top: 50%;
-  right: 16px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  font-family: "Lineicons";
-  content: "\ea5e";
-  font-size: 13px;
-  color: #7D7D7D;
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
-}
+/*.checkout-steps-form-style-1 .title:before {*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*  right: 16px;*/
+/*  -webkit-transform: translateY(-50%);*/
+/*          transform: translateY(-50%);*/
+/*  font-family: "Lineicons";*/
+/*  content: "\ea5e";*/
+/*  font-size: 13px;*/
+/*  color: #7D7D7D;*/
+/*  -webkit-transition: all 0.3s linear;*/
+/*  transition: all 0.3s linear;*/
+/*}*/
 
 .checkout-steps-form-style-1 .checkout-steps-form-content {
   padding: 25px;
