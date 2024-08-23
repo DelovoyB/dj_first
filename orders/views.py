@@ -73,7 +73,7 @@ class CreateOrderView(LoginRequiredMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Оформление заказа'
+        context['title'] = 'Checkout'
         context['order'] = True
         context['disable_modal_cart'] = True
         return context

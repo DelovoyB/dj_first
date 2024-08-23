@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-gvw01(ge-x-nrd%me8$mzfxw1u1+=ov=t&yy)p&r1^tphdjrl*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok-free.app']
 
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app']
 
 # Application definition
 
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'debug_toolbar',
+    # 'debug_toolbar',
 
     'main',
     'goods',
@@ -59,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'dj.urls'

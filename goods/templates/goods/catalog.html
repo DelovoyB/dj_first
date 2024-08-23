@@ -11,6 +11,7 @@
     <section class="product-grids section">
         <div class="container">
             <div class="row">
+                <h1>{{ hero1 }}</h1>
                 <div class="col-lg-3 col-12">
                     <!-- Start Product Sidebar -->
                     <div class="product-sidebar">
@@ -40,7 +41,7 @@
                             </div>
                         </div>
                         <!-- Start Single Widget -->
-                        <div class="single-widget condition">
+                        <div class="single-widget condition mb-4">
                             <h3>Condition</h3>
                             <div class="form-check">
                                 <input onchange="sendValueToController()" class="form-check-input" type="checkbox"
@@ -66,7 +67,7 @@
                                         <div class="single-product" style="margin-bottom: 30px; margin-top: 0;">
                                             <div class="product-image">
                                                 {% if product.image %}
-                                                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                                                    <img width="335" height="335" style="object-fit: contain;" src="{{product.image.url}}" alt="{{product.name}}">
                                                 {% else %}
                                                     <img src="https://via.placeholder.com/335x335" alt="#">
                                                 {% endif %}
@@ -74,9 +75,12 @@
                                                 <span class="sale-tag">-{{ product.discount }}%</span>
                                                 {% endif %}
                                                 <div class="button">
-                                                    <a href="{% url 'cart:cart_add' %}" class="btn add-to-cart" data-product-id="{{ product.id }}">
+                                                    <a href="{% if product.quantity %}{% url 'cart:cart_add' %}{% else %}#{% endif %}"
+                                                       class="btn add-to-cart {% if not product.quantity %}bg-danger disabled{% endif %}"
+                                                       {% if not product.quantity %}style="cursor: not-allowed;" {% endif %}
+                                                       data-product-id="{{ product.id }}">
                                                         {% csrf_token %}
-                                                        <i class="lni lni-cart"></i>Add to Cart</a>
+                                                        {% if product.quantity %}<i class="lni lni-cart"></i>Add to Cart{% else %}Out of Stock{% endif %}</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -94,6 +98,9 @@
                                                 </h4>
                                                 <div class="price">
                                                     <span>${{product.sell_price}}</span>
+                                                    {% if product.discount %}
+                                                    <span class="discount-price">${{product.price}}</span>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                         </div>

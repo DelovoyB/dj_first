@@ -1,16 +1,37 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
-from goods.models import Categories
+from goods.models import Categories, Products
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = 'main/index.html'
+    model = Products
+    context_object_name = 'goods'
+
+    def get_queryset(self):
+        goods = super().get_queryset()
+
+        self.hero1 = goods.filter(category__slug='smart-watches').first()
+        self.hero2 = goods.filter(category__slug='headphones')[1]
+        self.hero3 = goods.get(name="Apple iPhone 15 Pro Max")
+
+        self.special1 = goods.filter(quantity__gt=0).order_by('-id')[:3]
+        self.special2 = goods.filter(category__slug='headphones', discount__gt=0).first()
+        self.special3 = goods.filter(category__slug='laptops').order_by('price').first()
+
+        return goods
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Main page'
+        context['hero1'] = self.hero1
+        context['hero2'] = self.hero2
+        context['hero3'] = self.hero3
+        context['special1'] = self.special1
+        context['special2'] = self.special2
+        context['special3'] = self.special3
         return context
 
 

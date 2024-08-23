@@ -33,19 +33,19 @@ Index Of css
     Normalize CSS
 ========================================*/
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
-/*@font-face {*/
-/*  font-family: "Manrope";*/
-/*  src: url('../fonts/Manrope-Regular.woff2') format('woff2'),*/
-/*       url('../fonts/Manrope-Regular.woff') format('woff');*/
-/*  font-weight: normal;*/
-/*  font-style: normal;*/
-/*}*/
+@font-face {
+  font-family: "ManropeFallback";
+  src: url('../fonts/Manrope-Regular.woff2') format('woff2'),
+       url('../fonts/Manrope-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: "Manrope", "ManropeFallback", sans-serif;
   font-weight: 500;
   font-style: normal;
   color: #888;

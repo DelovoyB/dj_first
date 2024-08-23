@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('quantity', models.PositiveSmallIntegerField(default=0, verbose_name='Количество')),
-                ('session_key', models.CharField(blank=True, max_length=32, null=True, verbose_name='Ключ сессии')),
+                ('session_key', models.CharField(blank=True, max_length=32, null=True)),
                 ('created_timestamp', models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')),
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='goods.products', verbose_name='Товар')),
                 ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Пользователь')),

@@ -21,12 +21,12 @@ class CartAdmin(admin.ModelAdmin):
 
         if obj.user:
             return obj.user
-        return "Анонимный пользователь"
+        return "Anonymous user"
 
 
     def product_display(self, obj):
 
         return str(obj.product.name)
 
-    user_display.short_description = 'Пользователь'
-    product_display.short_description = 'Товар'
+    user_display.short_description = 'User'
+    product_display.short_description = 'Product'

@@ -42,10 +42,11 @@
                                 <div class="row align-items-end">
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="button cart-button">
-                                            <button href="{% url 'cart:cart_add' %}" class="btn add-to-cart"
-                                               data-product-id="{{ product.id }}" style="width: 100%;">
+                                            <button href="{% if product.quantity %}{% url 'cart:cart_add' %}{% else %}#{% endif %}" class="btn add-to-cart {% if not product.quantity %}bg-danger disabled{% endif %}"
+                                               data-product-id="{{ product.id }}"
+                                               style="width: 100%; {% if not product.quantity %}cursor: not-allowed; {% endif %}">
                                                 {% csrf_token %}
-                                                <i class="lni lni-cart"></i>Add to Cart</button>
+                                                {% if product.quantity %}<i class="lni lni-cart"></i>Add to Cart{% else %}Out of Stock{% endif %}</button>
                                         </div>
                                     </div>
                                 </div>

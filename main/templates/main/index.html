@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load goods_tags %}
 
 {% block header %}
     {% include "header.html" %}
@@ -16,32 +17,36 @@
                         <div class="hero-slider">
                             <!-- Start Single Slider -->
                             <div class="single-slider"
-                                style="background-image: url('{% static 'assets/images/hero/2.webp' %}');">
+                                style="background-image: url('{% static 'assets/images/hero/2.jpg' %}');">
                                 <div class="content">
-                                    <h2><span>No restocking fee ($35 savings)</span>
-                                        M75 Sport Watch
+                                    <h2><span>No restocking fee ($15 savings)</span>
+                                        {{ hero1.name }}
                                     </h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
-                                        labore dolore magna aliqua.</p>
-                                    <h3><span>Now Only</span> $320.99</h3>
+                                    <p style="display: -webkit-box;
+                                        -webkit-line-clamp: 2;
+                                        -webkit-box-orient: vertical;
+                                        overflow: hidden;">{{ hero1.description }}</p>
+                                    <h3><span>Now Only</span> ${{ hero1.sell_price }}</h3>
                                     <div class="button">
-                                        <a href="product-grids.html" class="btn">Shop Now</a>
+                                        <a href="{% url 'catalog:product' hero1.slug %}" class="btn">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Single Slider -->
                             <!-- Start Single Slider -->
                             <div class="single-slider"
-                                style="background-image: url('{% static 'assets/images/hero/3.webp' %}');">
+                                style="background-image: url('{% static 'assets/images/hero/3.jpg' %}');">
                                 <div class="content">
                                     <h2><span>Big Sale Offer</span>
-                                        Get the Best Deal on CCTV Camera
+                                        {{ hero2.name }}
                                     </h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
-                                        labore dolore magna aliqua.</p>
-                                    <h3><span>Combo Only:</span> $590.00</h3>
+                                    <p style="display: -webkit-box;
+                                        -webkit-line-clamp: 2;
+                                        -webkit-box-orient: vertical;
+                                        overflow: hidden;">{{ hero2.description }}</p>
+                                    <h3><span>Combo Only:</span> ${{ hero2.sell_price }}</h3>
                                     <div class="button">
-                                        <a href="product-grids.html" class="btn">Shop Now</a>
+                                        <a href="{% url 'catalog:product' hero2.slug %}" class="btn">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -55,13 +60,13 @@
                         <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
                             <!-- Start Small Banner -->
                             <div class="hero-small-banner"
-                                style="background-image: url('{% static 'assets/images/hero/1.webp' %}');">
+                                style="background-image: url('{% static 'assets/images/hero/1.jpg' %}');">
                                 <div class="content">
                                     <h2>
                                         <span>New line required</span>
-                                        iPhone 12 Pro Max
+                                        <a href="{% url 'catalog:product' hero3.slug %}">{{ hero3.name }}</a>
                                     </h2>
-                                    <h3>$259.99</h3>
+                                    <h3>${{ hero3.sell_price }}</h3>
                                 </div>
                             </div>
                             <!-- End Small Banner -->
@@ -73,7 +78,7 @@
                                     <h2>Weekly Sale!</h2>
                                     <p>Saving up to 50% off all online store items this week.</p>
                                     <div class="button">
-                                        <a class="btn" href="product-grids.html">Shop Now</a>
+                                        <a class="btn" href="{% url 'goods:index' 'all' %}">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +137,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>Special Offer</h2>
+                        <h2>Special Offers</h2>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have
                             suffered alteration in some form.</p>
                     </div>
@@ -141,85 +146,44 @@
             <div class="row">
                 <div class="col-lg-8 col-md-12 col-12">
                     <div class="row">
+                        {% for product in special1 %}
                         <div class="col-lg-4 col-md-4 col-12">
                             <!-- Start Single Product -->
                             <div class="single-product">
                                 <div class="product-image">
-                                    <img src="{% static 'assets/images/products/product3.webp' %}" alt="#">
+                                    <img width="250" height="250" style="object-fit: contain;" src="{{ product.image.url }}" alt="#">
                                     <div class="button">
-                                        <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to
-                                            Cart</a>
+                                        <a href="{% url 'cart:cart_add' %}" class="btn add-to-cart"
+                                            data-product-id="{{ product.id }}">
+                                            {% csrf_token %}
+                                            <i class="lni lni-cart"></i>Add to Cart</a>
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <span class="category">Camera</span>
+                                    <span class="category">{{ product.category }}</span>
                                     <h4 class="title">
-                                        <a href="product-grids.html">WiFi Security Camera</a>
+                                        <a href="{% url 'catalog:product' product.slug %}">{{ product.name }}</a>
                                     </h4>
                                     <div class="price">
-                                        <span>$399.00</span>
+                                        <span>${{ product.sell_price }}</span>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Single Product -->
                         </div>
-                        <div class="col-lg-4 col-md-4 col-12">
-                            <!-- Start Single Product -->
-                            <div class="single-product">
-                                <div class="product-image">
-                                    <img src="{% static 'assets/images/products/product8.webp' %}" alt="#">
-                                    <div class="button">
-                                        <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to
-                                            Cart</a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <span class="category">Laptop</span>
-                                    <h4 class="title">
-                                        <a href="product-grids.html">Apple MacBook Air</a>
-                                    </h4>
-                                    <div class="price">
-                                        <span>$899.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-12">
-                            <!-- Start Single Product -->
-                            <div class="single-product">
-                                <div class="product-image">
-                                    <img src="{% static 'assets/images/products/product6.webp' %}" alt="#">
-                                    <div class="button">
-                                        <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to
-                                            Cart</a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <span class="category">Speaker</span>
-                                    <h4 class="title">
-                                        <a href="product-grids.html">Bluetooth Speaker</a>
-                                    </h4>
-                                    <div class="price">
-                                        <span>$70.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                        </div>
+                        {% endfor %}
                     </div>
                     <!-- Start Banner -->
                     <div class="single-banner right"
-                        style="background-image:url('{% static 'assets/images/products/Offer2.webp' %}');margin-top: 30px;">
+                        style="background-image:url('{% static 'assets/images/products/Offer.jpg' %}');margin-top: 30px;">
                         <div class="content">
-                            <h2>Samsung Notebook 9 </h2>
-                            <p>Lorem ipsum dolor sit amet, <br>eiusmod tempor
-                                incididunt ut labore.</p>
+                            <h2>{{ special3.name }}</h2>
+                            <p>High performance and smooth operations.<br>Intel Core i5 1235U processor.</p>
                             <div class="price">
-                                <span>$590.00</span>
+                                <span>${{ special3.sell_price }}</span>
                             </div>
                             <div class="button">
-                                <a href="product-grids.html" class="btn">Shop Now</a>
+                                <a href="{% url 'catalog:product' special3.slug %}" class="btn">Shop Now</a>
                             </div>
                         </div>
                     </div>
@@ -228,17 +192,19 @@
                 <div class="col-lg-4 col-md-12 col-12">
                     <div class="offer-content">
                         <div class="image">
-                            <img src="{% static 'assets/images/products/Offer1.webp' %}" alt="#">
-                            <span class="sale-tag">-50%</span>
+                            <img src="{{ special2.image.url }}" alt="#">
+                            <span class="sale-tag">-{{ special2.discount }}%</span>
                         </div>
                         <div class="text">
-                            <h2><a href="product-grids.html">Bluetooth Headphone</a></h2>
+                            <h2><a href="{% url 'catalog:product' special2.slug %}">{{ special2.name }}</a></h2>
                             <div class="price">
-                                <span>$200.00</span>
-                                <span class="discount-price">$400.00</span>
+                                <span>${{ special2.sell_price }}</span>
+                                <span class="discount-price">${{ special2.price }}</span>
                             </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry incididunt ut
-                                eiusmod tempor labores.</p>
+                            <p style="display: -webkit-box;
+                                -webkit-line-clamp: 5;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;">{{ special2.description }}</p>
                         </div>
                         <div class="box-head">
                             <div class="box">
@@ -272,18 +238,7 @@
     <section class="banner section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="single-banner" style="background-image:url('{% static 'assets/images/products/banner1.webp' %}')">
-                        <div class="content">
-                            <h2>Smart Watch 2.0</h2>
-                            <p>Space Gray Aluminum Case with <br>Black/Volt Real Sport Band </p>
-                            <div class="button">
-                                <a href="product-grids.html" class="btn">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12 mb-4">
                     <div class="single-banner custom-responsive-margin"
                         style="background-image:url('{% static 'assets/images/products/banner2.webp' %}')">
                         <div class="content">
@@ -291,7 +246,18 @@
                             <p>Lorem ipsum dolor sit amet, <br>eiusmod tempor
                                 incididunt ut labore.</p>
                             <div class="button">
-                                <a href="product-grids.html" class="btn">Shop Now</a>
+                                <a href="{% url 'catalog:product' 'jbl-synchros-e50bt' %}" class="btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="single-banner" style="background-image:url('{% static 'assets/images/products/banner1.webp' %}')">
+                        <div class="content">
+                            <h2>Smart Watch 2.0</h2>
+                            <p>Space Gray Aluminum Case with <br>Black/Volt Real Sport Band </p>
+                            <div class="button">
+                                <a href="{% url 'goods:index' 'smart-watches' %}" class="btn">Shop Now</a>
                             </div>
                         </div>
                     </div>

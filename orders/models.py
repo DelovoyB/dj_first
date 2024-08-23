@@ -17,38 +17,34 @@ class OrderitemQueryset(models.QuerySet):
 
 class Order(models.Model):
 
-    user = models.ForeignKey(to=User, on_delete=models.SET_DEFAULT, blank=True, null=True, verbose_name='Пользователь', default=None)
-    created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания заказа')
-    phone_number = models.CharField(max_length=20, verbose_name='Номер телефона')
-    requires_delivery = models.BooleanField(default=False, verbose_name='Требуется доставка')
-    delivery_address = models.TextField(blank=True, null=True, verbose_name='Адрес доставки')
-    payment_on_get = models.BooleanField(default=False, verbose_name='Оплата при получении')
-    is_paid = models.BooleanField(default=False, verbose_name='Оплачено')
-    status = models.CharField(max_length=20, verbose_name='Статус заказа', default='В обработке')
+    user = models.ForeignKey(to=User, on_delete=models.SET_DEFAULT, blank=True, null=True, default=None)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
+    phone_number = models.CharField(max_length=20)
+    requires_delivery = models.BooleanField(default=False)
+    delivery_address = models.TextField(blank=True, null=True)
+    payment_on_get = models.BooleanField(default=False)
+    is_paid = models.BooleanField(default=False)
+    status = models.CharField(max_length=20, default='Processing')
 
     class Meta:
         db_table = 'order'
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказы'
         ordering = ('-created_timestamp',)
 
     def __str__(self):
-        return f'Заказ № {self.pk} | Покупатель {self.user.first_name} {self.user.last_name}'
+        return f'Order ID {self.pk} | Buyer {self.user.first_name} {self.user.last_name}'
 
 
 class OrderItem(models.Model):
 
-    order = models.ForeignKey(to=Order, on_delete=models.CASCADE, verbose_name='Заказ')
-    product = models.ForeignKey(to=Products, on_delete=models.SET_DEFAULT, null=True, verbose_name='Товар',default=None)
-    name = models.CharField(max_length=150, verbose_name='Название')
-    price = models.DecimalField(decimal_places=2, max_digits=7, verbose_name='Цена')
-    quantity = models.PositiveIntegerField(default=0, verbose_name='Количество')
-    created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Дата продажи')
+    order = models.ForeignKey(to=Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(to=Products, on_delete=models.SET_DEFAULT, null=True,default=None)
+    name = models.CharField(max_length=150)
+    price = models.DecimalField(decimal_places=2, max_digits=7)
+    quantity = models.PositiveIntegerField(default=0)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'order_item'
-        verbose_name = 'Проданный товар'
-        verbose_name_plural = 'Проданные товары'
         ordering = ('id',)
 
     objects = OrderitemQueryset.as_manager()
@@ -57,4 +53,4 @@ class OrderItem(models.Model):
         return round(self.price * self.quantity, 2)
 
     def __str__(self):
-        return f'Товар {self.name} | Заказ № {self.order.pk}'
+        return f'Product {self.name} | Order ID {self.order.pk}'
