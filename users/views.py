@@ -23,6 +23,11 @@ class UserLoginView(LoginView):
     template_name = 'users/login.html'
     form_class = UserLoginForm
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(reverse_lazy('user:profile'))
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         redirect_page = self.request.POST.get('next', None)
         if redirect_page and redirect_page != reverse('user:logout'):
@@ -56,6 +61,11 @@ class UserRegistrationView(CreateView):
     template_name = 'users/registration.html'
     form_class = UserRegistrationForm
     success_url = reverse_lazy('user:profile')
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(reverse_lazy('user:profile'))
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         session_key = self.request.session.session_key
