@@ -2,3 +2,4 @@ Django==5.1a1
 Pillow
 psycopg2
 djangorestframework
+django-redis

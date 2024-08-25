@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView, ListView
 
-from goods.models import Categories, Products
+from goods.models import Products
 
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class IndexView(ListView):
     template_name = 'main/index.html'
     model = Products

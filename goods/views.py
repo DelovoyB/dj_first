@@ -1,10 +1,13 @@
 from django.http import Http404
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from django.views.generic import DetailView, ListView
 
 from goods.models import Products
 from goods.utils import q_search
 
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class CatalogView(ListView):
     model = Products
     template_name = 'goods/catalog.html'
