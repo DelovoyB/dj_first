@@ -12,11 +12,6 @@ from carts.models import Cart
 from orders.models import Order, OrderItem
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
 
-from rest_framework import generics
-
-from users.models import User
-from users.serializer import UserSerializer
-
 
 class UserLoginView(LoginView):
 
@@ -132,14 +127,3 @@ def logout(request):
     messages.success(request, 'Вы вышли из аккаунта')
     auth.logout(request)
     return redirect(reverse('main:index'))
-
-
-class UsersList(generics.ListCreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class UsersRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    lookup_field = 'username'
