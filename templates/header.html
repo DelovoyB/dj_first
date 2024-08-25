@@ -1,4 +1,5 @@
 {% load static %}
+{% load cache %}
 {% load goods_tags %}
 {% load carts_tags %}
 <header class="header navbar-area">
@@ -57,12 +58,14 @@
 
                         <span class="cat-button"><i class="lni lni-menu"></i>Categories</span>
                         <ul class="sub-category">
+                            {% cache 900 categories %}
                             {% tag_categories as categories %}
                             {% for category in categories %}
 
                                 <li><a href="{% url "catalog:index" category.slug %}">{{ category.name }}</a></li>
 
                             {% endfor %}
+                            {% endcache %}
                         </ul>
                     </div>
                     <!-- End Mega Category Menu -->

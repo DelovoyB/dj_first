@@ -1,4 +1,5 @@
 {% load static %}
+{% load cache %}
 {% load goods_tags %}
 <footer class="footer">
     <!-- Start Footer Middle -->
@@ -61,10 +62,12 @@
                         <div class="single-footer f-link">
                             <h3>Shop Departments</h3>
                             <ul>
+                                {% cache 900 categories %}
                                 {% tag_categories as categories %}
                                 {% for category in categories %}
                                     <li><a href="{% url "catalog:index" category.slug %}">{{ category.name }}</a></li>
                                 {% endfor %}
+                                {% endcache %}
                             </ul>
                         </div>
                         <!-- End Single Widget -->
