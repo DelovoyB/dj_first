@@ -33,7 +33,7 @@ class IndexView(CacheMixin, ListView):
         self.special1 = self.set_get_cache_fn(
             'special1_cache',
             lambda: list(goods.filter(quantity__gt=0).order_by('-id')[:3]),
-            self.cache_time
+            60*3
         )
 
         self.special2 = self.set_get_cache_fn(

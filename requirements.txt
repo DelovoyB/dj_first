@@ -1,5 +1,9 @@
-Django==5.1a1
+Django==5.1
 Pillow
 psycopg2
 djangorestframework
 django-redis
+celery[redis]
+python-decouple
+django-celery-results
+gevent

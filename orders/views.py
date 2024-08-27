@@ -1,11 +1,12 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.forms import ValidationError
 from django.urls import reverse_lazy
 from django.views.generic import FormView
+
+from .tasks import send_order_email
 
 from carts.models import Cart
 from orders.forms import CreateOrderForm
@@ -61,6 +62,7 @@ class CreateOrderView(LoginRequiredMixin, FormView):
                     cart_item.delete()
 
                 messages.success(self.request, 'Заказ успешно оформлен')
+                transaction.on_commit(lambda: send_order_email(order.id, user.email))
                 return redirect('user:profile')
 
         except ValidationError as error:
