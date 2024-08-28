@@ -7,3 +7,5 @@ celery[redis]
 python-decouple
 django-celery-results
 gevent
+django-debug-toolbar
+hypothesis
