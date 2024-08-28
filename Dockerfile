@@ -1,14 +1,13 @@
-# Используем официальный образ Python
-FROM python:latest
+FROM python:3.12.4
 
-# Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
-# Копируем все файлы из текущей директории в директорию /app внутри контейнера
-COPY . /app
+COPY requirements.txt /app/
 
-# Устанавливаем зависимости из requirements.txt, если он существует
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Команда по умолчанию для выполнения Python-скриптов
-CMD ["python"]
+COPY . /app/
+
+EXPOSE 8000
+
+CMD ["waitress-serve", "--host=0.0.0.0", "--port=8000", "dj.wsgi:application"]

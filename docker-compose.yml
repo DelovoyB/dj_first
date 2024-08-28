@@ -1,15 +1,50 @@
-version: '3'
+version: '4'
 services:
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-
-  postgres:
-    image: postgres:latest
+  db:
+    image: postgres:16.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=home
-      - POSTGRES_PASSWORD=home
-      - POSTGRES_DB=home
+      POSTGRES_DB: home
+      POSTGRES_USER: home
+      POSTGRES_PASSWORD: home
+
+  redis:
+    image: redis:7.4.0
+
+  web:
+    build: .
+    command: waitress-serve --host=0.0.0.0 --port=8000 dj.wsgi:application
+    volumes:
+      - .:/app
     ports:
-      - "5432:5432"
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DEBUG: 'False'
+      DATABASE_URL: postgres://home:home@db:5432/home
+      REDIS_URL: redis://redis:6379/1
+      CELERY_BROKER_URL: redis://redis:6379/2
+      CELERY_RESULT_BACKEND: redis://redis:6379/3
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+
+  celery:
+    build: .
+    command: celery -A dj worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    environment:
+      DEBUG: 'False'
+      DATABASE_URL: postgres://home:home@db:5432/home
+      REDIS_URL: redis://redis:6379/1
+      CELERY_BROKER_URL: redis://redis:6379/2
+      CELERY_RESULT_BACKEND: redis://redis:6379/3
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+
+volumes:
+  postgres_data:
