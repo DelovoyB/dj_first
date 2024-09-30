@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.abspath('..'))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'dj.settings'
 django.setup()
 
+html_baseurl = 'https://delovoyb.github.io/dj_first/'
 
 project = 'dj_first'
 copyright = '2024, DanilaB'
