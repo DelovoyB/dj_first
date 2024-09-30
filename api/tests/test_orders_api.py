@@ -7,6 +7,12 @@ from users.models import User
 
 class OrderViewSetTest(TestCase):
     def setUp(self):
+        """
+        Set up a test client and create a test user and an order for the user
+        
+        The test client is set up with the test user authenticated, and the test user
+        has a single order with the given details.
+        """
         self.client = APIClient()
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.client.force_authenticate(user=self.user)
@@ -21,8 +27,14 @@ class OrderViewSetTest(TestCase):
         )
 
 
-
     def test_get_orders(self):
+        """
+        Test that a GET to the order list endpoint returns a 200 status and a list
+        of orders for the authenticated user
+
+        The list of orders is expected to contain a single order, with the id of
+        the order that was created in the setUp method.
+        """
         response = self.client.get('/api/orders/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
@@ -30,6 +42,9 @@ class OrderViewSetTest(TestCase):
 
 
     def test_create_order(self):
+        """
+        Test that a POST to the order list endpoint with valid data creates a new order
+        """
         data = {
             'user': self.user.id,
             'phone_number': '9876543210',
@@ -47,6 +62,9 @@ class OrderViewSetTest(TestCase):
 
 
     def test_update_order(self):
+        """
+        Test that a PUT to the order detail endpoint with valid data updates an order
+        """
         data = {
             'user': self.user.id,
             'phone_number': '1111111111',
@@ -64,6 +82,12 @@ class OrderViewSetTest(TestCase):
 
 
     def test_delete_order(self):
+        """
+        Test that a DELETE to the order detail endpoint deletes an order
+
+        This test deletes the single order that was created in the setUp method.
+        After the deletion, the order count is expected to be zero.
+        """
         response = self.client.delete(f'/api/orders/{self.order.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Order.objects.count(), 0)

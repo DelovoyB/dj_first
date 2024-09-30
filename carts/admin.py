@@ -18,14 +18,19 @@ class CartAdmin(admin.ModelAdmin):
     search_fields = ['user']
 
     def user_display(self, obj):
-
+        """
+        Return the user associated with the cart, or "Anonymous user" if the
+        cart is anonymous.
+        """
         if obj.user:
             return obj.user
         return "Anonymous user"
 
 
     def product_display(self, obj):
-
+        """
+        Return the name of the product associated with the cart.
+        """
         return str(obj.product.name)
 
     user_display.short_description = 'User'

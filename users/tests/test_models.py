@@ -21,6 +21,16 @@ class UserModelTest(HypothesisTestCase):
         phone_number=st.text(min_size=0, max_size=15,  alphabet=st.characters(blacklist_categories=["Cc", "Cs"])),
     )
     def test_create_user(self, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, image, phone_number):
+        """
+        Test that a user can be created with valid password, last login, is_superuser, username, first name, last name, email, is_staff, is_active, date_joined, image and phone number.
+
+        The ``full_clean`` method is called to ensure that the user is valid
+        according to the model's field definitions. The ``save`` method is then
+        called to persist the user to the database.
+
+        The test then checks that the user has been created with the expected
+        password, last login, is_superuser, username, first name, last name, email, is_staff, is_active, date_joined, image and phone number.
+        """
         user = User(password=password, last_login=last_login, is_superuser=is_superuser, username=username, first_name=first_name, last_name=last_name, email=email.lower(), is_staff=is_staff, is_active=is_active, date_joined=date_joined, image=image, phone_number=phone_number)
         user.full_clean()
         user.save()

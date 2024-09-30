@@ -14,6 +14,12 @@ class Categories(models.Model):
         verbose_name_plural = 'Categories'
 
     def __str__(self):
+        """
+        Returns a string representation of the category object, which is its name.
+        
+        Returns:
+            str: The name of the category.
+        """
         return self.name
 
 
@@ -34,12 +40,38 @@ class Products(models.Model):
         verbose_name_plural = 'Products'
 
     def __str__(self):
+        """
+        Returns a string representation of the product object, which is its name
+        followed by quantity.
+        
+        Returns:
+            str: The name of the product and the quantity.
+        """
         return f'{self.name} Quantity - {self.quantity}'
 
     def get_absolute_url(self):
+        """
+        Returns the URL of the product detail page as a string.
+        
+        The URL is in the format of '/catalog/<product_slug>/' where <product_slug>
+        is the slug of the product.
+
+        Returns:
+            str: The URL of the product detail page.
+        """
         return reverse('catalog:product', kwargs={'product_slug': self.slug})
 
     def sell_price(self):
+        """
+        Returns the selling price of the product as a float.
+
+        If the product has a discount (discount > 0), it will return the selling price
+        of the product, which is the price minus the discount. Otherwise, it will return
+        the price as the selling price.
+
+        Returns:
+            float: The selling price of the product.
+        """
         if self.discount > 0:
             return round(self.price - (self.price * self.discount / 100),2)
         return self.price

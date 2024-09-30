@@ -12,6 +12,13 @@ class IndexView(CacheMixin, ListView):
     cache_time = 60 * 15
 
     def get_queryset(self):
+        """
+        Override get_queryset to set hero and special products to the instance
+        variables. These are then used in the get_context_data method to be
+        added to the context.
+
+        Returns the queryset of all products.
+        """
         goods = super().get_queryset()
 
         self.hero1 = self.set_get_cache_fn(
@@ -51,6 +58,16 @@ class IndexView(CacheMixin, ListView):
         return goods
 
     def get_context_data(self, **kwargs):
+        """
+        Set the context data for the main page.
+
+        Set the title of the page to "Main page", and set the context variables
+        hero1, hero2, hero3, special1, special2, and special3 to the corresponding
+        products.
+
+        Returns:
+            dict: The context data for the main page.
+        """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Main page'
         context['hero1'] = self.hero1
@@ -61,41 +78,19 @@ class IndexView(CacheMixin, ListView):
         context['special3'] = self.special3
         return context
 
-# class IndexView(CacheMixin, ListView):
-#     template_name = 'main/index.html'
-#     model = Products
-#     context_object_name = 'goods'
-#     cache_time = 60 * 15
-#
-#     def get_queryset(self):
-#         goods = super().get_queryset()
-#
-#         self.hero1 = self.set_get_cache(goods.filter(category__slug='smart-watches').first(), 'hero1_cache', self.cache_time)
-#         self.hero2 = self.set_get_cache(goods.filter(category__slug='headphones')[1], 'hero2_cache', self.cache_time)
-#         self.hero3 = self.set_get_cache(goods.get(name="Apple iPhone 15 Pro Max"), 'hero3_cache', self.cache_time)
-#
-#         self.special1 = self.set_get_cache(list(goods.filter(quantity__gt=0).order_by('-id')[:3]), 'special1_cache', self.cache_time)
-#         self.special2 = self.set_get_cache(goods.filter(category__slug='headphones', discount__gt=0).first(), 'special2_cache', self.cache_time)
-#         self.special3 = self.set_get_cache(goods.filter(category__slug='laptops').order_by('price').first(), 'special3_cache', self.cache_time)
-#
-#         return goods
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = 'Main page'
-#         context['hero1'] = self.hero1
-#         context['hero2'] = self.hero2
-#         context['hero3'] = self.hero3
-#         context['special1'] = self.special1
-#         context['special2'] = self.special2
-#         context['special3'] = self.special3
-#         return context
-
 
 class AboutView(TemplateView):
     template_name = 'main/about.html'
 
     def get_context_data(self, **kwargs):
+        """
+        Set the context data for the about page.
+
+        Set the title of the page to "About us".
+        
+        Returns:
+            dict: The context data for the about page.
+        """
         context = super().get_context_data(**kwargs)
         context['title'] = 'About us'
         return context
@@ -114,17 +109,28 @@ class FaqView(TemplateView):
     template_name = 'main/faq.html'
 
     def get_context_data(self, **kwargs):
+        """
+        Set the context data for the FAQ page.
+
+        Set the title of the page to "FAQ".
+
+        Returns:
+            dict: The context data for the FAQ page.
+        """
         context = super().get_context_data(**kwargs)
         context['title'] = 'FAQ'
         return context
 
 
 def handle404(request, exception):
+    """
+    A custom 404 handler that renders the 404.html template with a status code of 404.
+
+    Args:
+        request (Request): The request object.
+        exception (Exception): The exception that caused the 404 error.
+
+    Returns:
+        Response: The rendered 404.html template with a status code of 404.
+    """
     return render(request, 'main/404.html', status=404)
-
-
-# def about(request):
-#     context = {
-#         'title': 'О нас'
-#     }
-#     return render(request, 'main/about.html', context)

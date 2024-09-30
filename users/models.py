@@ -11,4 +11,10 @@ class User(AbstractUser):
         db_table = 'user'
 
     def __str__(self):
+        """
+        Returns a string representation of the user object, which is its username.
+
+        Returns:
+            str: The username of the user.
+        """
         return self.username

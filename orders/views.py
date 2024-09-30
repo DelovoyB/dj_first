@@ -20,12 +20,36 @@ class CreateOrderView(LoginRequiredMixin, FormView):
     success_url = reverse_lazy('user:profile')
 
     def get_initial(self):
+        """
+        Return the initial data for the form.
+
+        The initial data is set as follows:
+
+        - first_name: The first name of the current user.
+        - last_name: The last name of the current user.
+
+        The initial data is then passed to the form to be used as the initial values of the form fields.
+        """
         initial = super().get_initial()
         initial['first_name'] = self.request.user.first_name
         initial['last_name'] = self.request.user.last_name
         return initial
 
     def form_valid(self, form):
+        """
+        If the form is valid, create a new order and order items based on the
+        items in the cart and the form data.
+
+        If there is not enough stock for a product in the cart, raise a
+        ValidationError. If there is enough stock, create a new order item and
+        deduct the quantity of the order item from the product's quantity.
+
+        After the order is created, send an email to the user with the order
+        details.
+
+        If there is an error creating the order, return a redirect to the create
+        order view with a warning message.
+        """
         try:
             with transaction.atomic():
                 user = self.request.user
@@ -70,10 +94,23 @@ class CreateOrderView(LoginRequiredMixin, FormView):
             return redirect('orders:create_order')
 
     def form_invalid(self, form):
+        """
+        If the form is invalid, redirect back to the checkout page with
+        an error message.
+        """ 
         messages.error(self.request, 'Заполните все обязательные поля')
         return redirect('orders:create_order')
 
     def get_context_data(self, **kwargs):
+        """
+        Set the context data for the checkout page.
+
+        The context data includes the page title, whether the page is an order
+        page, and whether to disable the modal cart.
+
+        Returns:
+            dict: The context data for the checkout page.
+        """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Checkout'
         context['order'] = True

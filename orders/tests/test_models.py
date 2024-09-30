@@ -19,6 +19,17 @@ class OrderModelTest(HypothesisTestCase):
         status=st.text(min_size=1, max_size=20, alphabet=st.characters(blacklist_categories=["Cc", "Cs"])),
     )
     def test_create_order(self, user, created_timestamp, phone_number, requires_delivery, delivery_address, payment_on_get, is_paid, status):
+        """
+        Test that an order can be created with valid user, created timestamp, phone number, requires delivery, delivery address, payment on get, is paid and status.
+
+        The ``full_clean`` method is called to ensure that the order is valid
+        according to the model's field definitions. The ``save`` method is then
+        called to persist the order to the database.
+
+        The test then checks that the order has been created with the expected
+        user, created timestamp, phone number, requires delivery, delivery address,
+        payment on get, is paid and status.
+        """
         order = Order(
             user=user,
             created_timestamp=created_timestamp,
@@ -54,6 +65,16 @@ class OrderItemModelTest(HypothesisTestCase):
         created_timestamp=st.datetimes(timezones=st.timezones()),
     )
     def test_create_order_item(self, order, product, name, price, quantity, created_timestamp):
+        """
+        Test that an order item can be created with valid order, product, name, price, quantity and created timestamp.
+
+        The ``full_clean`` method is called to ensure that the order item is valid
+        according to the model's field definitions. The ``save`` method is then
+        called to persist the order item to the database.
+
+        The test then checks that the order item has been created with the expected
+        order, product, name, price, quantity and created timestamp.
+        """
         order_item = OrderItem(
             order=order,
             product=product,

@@ -18,6 +18,10 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     def get_permissions(self):
+        """
+        Override get_permissions to only return IsAuthenticated for list and retrieve actions
+        and IsAuthenticated and IsAdminUser for other actions.
+        """
         if self.action in ['list', 'retrieve']:
             permission_classes = [IsAuthenticated]
         else:
@@ -25,6 +29,11 @@ class UserViewSet(viewsets.ModelViewSet):
         return [permission() for permission in permission_classes]
 
     def get_queryset(self):
+        """
+        Override get_queryset to only return all users if the current user is staff
+        
+        Otherwise, return an empty queryset.
+        """
         queryset = super().get_queryset()
         if not self.request.user.is_staff:
             queryset = queryset.none()
