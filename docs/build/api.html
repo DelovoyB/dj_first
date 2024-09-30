@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Api Module Documentation &mdash; dj_first  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Carts Module Documentation" href="carts.html" />
+    <link rel="prev" title="Dj Module Documentation" href="dj.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dj_first
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dj.html">Dj Module Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Api Module Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-api.views">API Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api.views.CategoryViewSet"><code class="docutils literal notranslate"><span class="pre">CategoryViewSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.CategoryViewSet.dispatch"><code class="docutils literal notranslate"><span class="pre">CategoryViewSet.dispatch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.CategoryViewSet.lookup_field"><code class="docutils literal notranslate"><span class="pre">CategoryViewSet.lookup_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.CategoryViewSet.queryset"><code class="docutils literal notranslate"><span class="pre">CategoryViewSet.queryset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.CategoryViewSet.serializer_class"><code class="docutils literal notranslate"><span class="pre">CategoryViewSet.serializer_class</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api.views.OrderViewSet"><code class="docutils literal notranslate"><span class="pre">OrderViewSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.OrderViewSet.dispatch"><code class="docutils literal notranslate"><span class="pre">OrderViewSet.dispatch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.OrderViewSet.lookup_field"><code class="docutils literal notranslate"><span class="pre">OrderViewSet.lookup_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.OrderViewSet.queryset"><code class="docutils literal notranslate"><span class="pre">OrderViewSet.queryset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.OrderViewSet.serializer_class"><code class="docutils literal notranslate"><span class="pre">OrderViewSet.serializer_class</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api.views.ProductViewSet"><code class="docutils literal notranslate"><span class="pre">ProductViewSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.ProductViewSet.dispatch"><code class="docutils literal notranslate"><span class="pre">ProductViewSet.dispatch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.ProductViewSet.lookup_field"><code class="docutils literal notranslate"><span class="pre">ProductViewSet.lookup_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.ProductViewSet.queryset"><code class="docutils literal notranslate"><span class="pre">ProductViewSet.queryset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.ProductViewSet.serializer_class"><code class="docutils literal notranslate"><span class="pre">ProductViewSet.serializer_class</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api.views.UserViewSet"><code class="docutils literal notranslate"><span class="pre">UserViewSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.UserViewSet.authentication_classes"><code class="docutils literal notranslate"><span class="pre">UserViewSet.authentication_classes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.UserViewSet.dispatch"><code class="docutils literal notranslate"><span class="pre">UserViewSet.dispatch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.UserViewSet.get_permissions"><code class="docutils literal notranslate"><span class="pre">UserViewSet.get_permissions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.UserViewSet.get_queryset"><code class="docutils literal notranslate"><span class="pre">UserViewSet.get_queryset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.UserViewSet.permission_classes"><code class="docutils literal notranslate"><span class="pre">UserViewSet.permission_classes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.UserViewSet.queryset"><code class="docutils literal notranslate"><span class="pre">UserViewSet.queryset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.UserViewSet.serializer_class"><code class="docutils literal notranslate"><span class="pre">UserViewSet.serializer_class</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-api.tests.test_categories_api">API Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api.tests.test_categories_api.CategoryViewSetTest"><code class="docutils literal notranslate"><span class="pre">CategoryViewSetTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_categories_api.CategoryViewSetTest.setUp"><code class="docutils literal notranslate"><span class="pre">CategoryViewSetTest.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_categories_api.CategoryViewSetTest.test_create_category"><code class="docutils literal notranslate"><span class="pre">CategoryViewSetTest.test_create_category()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_categories_api.CategoryViewSetTest.test_delete_category"><code class="docutils literal notranslate"><span class="pre">CategoryViewSetTest.test_delete_category()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_categories_api.CategoryViewSetTest.test_get_categories"><code class="docutils literal notranslate"><span class="pre">CategoryViewSetTest.test_get_categories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_categories_api.CategoryViewSetTest.test_update_category"><code class="docutils literal notranslate"><span class="pre">CategoryViewSetTest.test_update_category()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api.tests.test_products_api.ProductViewSetTest"><code class="docutils literal notranslate"><span class="pre">ProductViewSetTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_products_api.ProductViewSetTest.setUp"><code class="docutils literal notranslate"><span class="pre">ProductViewSetTest.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_products_api.ProductViewSetTest.test_create_product"><code class="docutils literal notranslate"><span class="pre">ProductViewSetTest.test_create_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_products_api.ProductViewSetTest.test_delete_product"><code class="docutils literal notranslate"><span class="pre">ProductViewSetTest.test_delete_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_products_api.ProductViewSetTest.test_get_products"><code class="docutils literal notranslate"><span class="pre">ProductViewSetTest.test_get_products()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_products_api.ProductViewSetTest.test_update_product"><code class="docutils literal notranslate"><span class="pre">ProductViewSetTest.test_update_product()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api.tests.test_orders_api.OrderViewSetTest"><code class="docutils literal notranslate"><span class="pre">OrderViewSetTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_orders_api.OrderViewSetTest.setUp"><code class="docutils literal notranslate"><span class="pre">OrderViewSetTest.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_orders_api.OrderViewSetTest.test_create_order"><code class="docutils literal notranslate"><span class="pre">OrderViewSetTest.test_create_order()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_orders_api.OrderViewSetTest.test_delete_order"><code class="docutils literal notranslate"><span class="pre">OrderViewSetTest.test_delete_order()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_orders_api.OrderViewSetTest.test_get_orders"><code class="docutils literal notranslate"><span class="pre">OrderViewSetTest.test_get_orders()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_orders_api.OrderViewSetTest.test_update_order"><code class="docutils literal notranslate"><span class="pre">OrderViewSetTest.test_update_order()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.setUp"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_create_user_admin_only"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_create_user_admin_only()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_create_user_non_admin"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_create_user_non_admin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_delete_user_admin_only"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_delete_user_admin_only()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_delete_user_non_admin"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_delete_user_non_admin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_list_users_authenticated"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_list_users_authenticated()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_list_users_unauthenticated"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_list_users_unauthenticated()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_retrieve_user_authenticated"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_retrieve_user_authenticated()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_retrieve_user_unauthenticated"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_retrieve_user_unauthenticated()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_update_user_admin_only"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_update_user_admin_only()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.tests.test_users_api.UserViewSetTest.test_update_user_non_admin"><code class="docutils literal notranslate"><span class="pre">UserViewSetTest.test_update_user_non_admin()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="carts.html">Carts Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goods.html">Goods Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orders.html">Orders Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users Module Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dj_first</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Api Module Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-module-documentation">
+<h1>Api Module Documentation<a class="headerlink" href="#api-module-documentation" title="Link to this heading"></a></h1>
+<section id="module-api.views">
+<span id="api-application"></span><h2>API Application<a class="headerlink" href="#module-api.views" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.CategoryViewSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">CategoryViewSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#CategoryViewSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.CategoryViewSet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelViewSet</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.CategoryViewSet.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.views.CategoryViewSet.dispatch" title="Link to this definition"></a></dt>
+<dd><p><cite>.dispatch()</cite> is pretty much the same as Django’s regular dispatch,
+but with extra hooks for startup, finalize, and exception handling.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.CategoryViewSet.lookup_field">
+<span class="sig-name descname"><span class="pre">lookup_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slug'</span></em><a class="headerlink" href="#api.views.CategoryViewSet.lookup_field" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.CategoryViewSet.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><a class="headerlink" href="#api.views.CategoryViewSet.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.CategoryViewSet.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.CategoryViewSet.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">CategorySerializer</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.OrderViewSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">OrderViewSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#OrderViewSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.OrderViewSet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelViewSet</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.OrderViewSet.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.views.OrderViewSet.dispatch" title="Link to this definition"></a></dt>
+<dd><p><cite>.dispatch()</cite> is pretty much the same as Django’s regular dispatch,
+but with extra hooks for startup, finalize, and exception handling.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.OrderViewSet.lookup_field">
+<span class="sig-name descname"><span class="pre">lookup_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'id'</span></em><a class="headerlink" href="#api.views.OrderViewSet.lookup_field" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.OrderViewSet.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><a class="headerlink" href="#api.views.OrderViewSet.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.OrderViewSet.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.OrderViewSet.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">OrderSerializer</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.ProductViewSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">ProductViewSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#ProductViewSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ProductViewSet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelViewSet</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ProductViewSet.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.views.ProductViewSet.dispatch" title="Link to this definition"></a></dt>
+<dd><p><cite>.dispatch()</cite> is pretty much the same as Django’s regular dispatch,
+but with extra hooks for startup, finalize, and exception handling.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.ProductViewSet.lookup_field">
+<span class="sig-name descname"><span class="pre">lookup_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slug'</span></em><a class="headerlink" href="#api.views.ProductViewSet.lookup_field" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.ProductViewSet.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><a class="headerlink" href="#api.views.ProductViewSet.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.ProductViewSet.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.ProductViewSet.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">ProductSerializer</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.UserViewSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">UserViewSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#UserViewSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.UserViewSet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelViewSet</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.UserViewSet.authentication_classes">
+<span class="sig-name descname"><span class="pre">authentication_classes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.authentication.SessionAuthentication'&gt;]</span></em><a class="headerlink" href="#api.views.UserViewSet.authentication_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.UserViewSet.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.views.UserViewSet.dispatch" title="Link to this definition"></a></dt>
+<dd><p><cite>.dispatch()</cite> is pretty much the same as Django’s regular dispatch,
+but with extra hooks for startup, finalize, and exception handling.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.UserViewSet.get_permissions">
+<span class="sig-name descname"><span class="pre">get_permissions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#UserViewSet.get_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.UserViewSet.get_permissions" title="Link to this definition"></a></dt>
+<dd><p>Override get_permissions to only return IsAuthenticated for list and retrieve actions
+and IsAuthenticated and IsAdminUser for other actions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.UserViewSet.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#UserViewSet.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.UserViewSet.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Override get_queryset to only return all users if the current user is staff</p>
+<p>Otherwise, return an empty queryset.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.UserViewSet.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></em><a class="headerlink" href="#api.views.UserViewSet.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.UserViewSet.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><a class="headerlink" href="#api.views.UserViewSet.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.UserViewSet.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.UserViewSet.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">UserSerializer</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-api.tests.test_categories_api">
+<span id="api-tests"></span><h2>API Tests<a class="headerlink" href="#module-api.tests.test_categories_api" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.tests.test_categories_api.CategoryViewSetTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.tests.test_categories_api.</span></span><span class="sig-name descname"><span class="pre">CategoryViewSetTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_categories_api.html#CategoryViewSetTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_categories_api.CategoryViewSetTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_categories_api.CategoryViewSetTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_categories_api.html#CategoryViewSetTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_categories_api.CategoryViewSetTest.setUp" title="Link to this definition"></a></dt>
+<dd><p>Set up a test client and create a category</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_categories_api.CategoryViewSetTest.test_create_category">
+<span class="sig-name descname"><span class="pre">test_create_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_categories_api.html#CategoryViewSetTest.test_create_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_categories_api.CategoryViewSetTest.test_create_category" title="Link to this definition"></a></dt>
+<dd><p>Test that a POST to the category list endpoint with valid data creates a new category</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_categories_api.CategoryViewSetTest.test_delete_category">
+<span class="sig-name descname"><span class="pre">test_delete_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_categories_api.html#CategoryViewSetTest.test_delete_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_categories_api.CategoryViewSetTest.test_delete_category" title="Link to this definition"></a></dt>
+<dd><p>Test that a DELETE to the category detail endpoint deletes a category</p>
+<p>This test deletes the single category that was created in the setUp method.
+After the deletion, the category count is expected to be zero.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_categories_api.CategoryViewSetTest.test_get_categories">
+<span class="sig-name descname"><span class="pre">test_get_categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_categories_api.html#CategoryViewSetTest.test_get_categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_categories_api.CategoryViewSetTest.test_get_categories" title="Link to this definition"></a></dt>
+<dd><p>Test that a GET to the category list endpoint returns a 200 status</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_categories_api.CategoryViewSetTest.test_update_category">
+<span class="sig-name descname"><span class="pre">test_update_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_categories_api.html#CategoryViewSetTest.test_update_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_categories_api.CategoryViewSetTest.test_update_category" title="Link to this definition"></a></dt>
+<dd><p>Test that a PUT to the category detail endpoint with valid data updates a category</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-api.tests.test_products_api">
+<dt class="sig sig-object py" id="api.tests.test_products_api.ProductViewSetTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.tests.test_products_api.</span></span><span class="sig-name descname"><span class="pre">ProductViewSetTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_products_api.html#ProductViewSetTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_products_api.ProductViewSetTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_products_api.ProductViewSetTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_products_api.html#ProductViewSetTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_products_api.ProductViewSetTest.setUp" title="Link to this definition"></a></dt>
+<dd><p>Set up a test client and create a category</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_products_api.ProductViewSetTest.test_create_product">
+<span class="sig-name descname"><span class="pre">test_create_product</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_products_api.html#ProductViewSetTest.test_create_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_products_api.ProductViewSetTest.test_create_product" title="Link to this definition"></a></dt>
+<dd><p>Test that a POST to the product list endpoint with valid data creates a new product</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_products_api.ProductViewSetTest.test_delete_product">
+<span class="sig-name descname"><span class="pre">test_delete_product</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_products_api.html#ProductViewSetTest.test_delete_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_products_api.ProductViewSetTest.test_delete_product" title="Link to this definition"></a></dt>
+<dd><p>Test that a DELETE to the product detail endpoint deletes a product</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_products_api.ProductViewSetTest.test_get_products">
+<span class="sig-name descname"><span class="pre">test_get_products</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_products_api.html#ProductViewSetTest.test_get_products"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_products_api.ProductViewSetTest.test_get_products" title="Link to this definition"></a></dt>
+<dd><p>Test that a GET to the product list endpoint returns a 200 status</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_products_api.ProductViewSetTest.test_update_product">
+<span class="sig-name descname"><span class="pre">test_update_product</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_products_api.html#ProductViewSetTest.test_update_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_products_api.ProductViewSetTest.test_update_product" title="Link to this definition"></a></dt>
+<dd><p>Test that a PUT to the product detail endpoint with valid data updates a product</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-api.tests.test_orders_api">
+<dt class="sig sig-object py" id="api.tests.test_orders_api.OrderViewSetTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.tests.test_orders_api.</span></span><span class="sig-name descname"><span class="pre">OrderViewSetTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_orders_api.html#OrderViewSetTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_orders_api.OrderViewSetTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_orders_api.OrderViewSetTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_orders_api.html#OrderViewSetTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_orders_api.OrderViewSetTest.setUp" title="Link to this definition"></a></dt>
+<dd><p>Set up a test client and create a test user and an order for the user</p>
+<p>The test client is set up with the test user authenticated, and the test user
+has a single order with the given details.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_orders_api.OrderViewSetTest.test_create_order">
+<span class="sig-name descname"><span class="pre">test_create_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_orders_api.html#OrderViewSetTest.test_create_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_orders_api.OrderViewSetTest.test_create_order" title="Link to this definition"></a></dt>
+<dd><p>Test that a POST to the order list endpoint with valid data creates a new order</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_orders_api.OrderViewSetTest.test_delete_order">
+<span class="sig-name descname"><span class="pre">test_delete_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_orders_api.html#OrderViewSetTest.test_delete_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_orders_api.OrderViewSetTest.test_delete_order" title="Link to this definition"></a></dt>
+<dd><p>Test that a DELETE to the order detail endpoint deletes an order</p>
+<p>This test deletes the single order that was created in the setUp method.
+After the deletion, the order count is expected to be zero.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_orders_api.OrderViewSetTest.test_get_orders">
+<span class="sig-name descname"><span class="pre">test_get_orders</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_orders_api.html#OrderViewSetTest.test_get_orders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_orders_api.OrderViewSetTest.test_get_orders" title="Link to this definition"></a></dt>
+<dd><p>Test that a GET to the order list endpoint returns a 200 status and a list
+of orders for the authenticated user</p>
+<p>The list of orders is expected to contain a single order, with the id of
+the order that was created in the setUp method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_orders_api.OrderViewSetTest.test_update_order">
+<span class="sig-name descname"><span class="pre">test_update_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_orders_api.html#OrderViewSetTest.test_update_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_orders_api.OrderViewSetTest.test_update_order" title="Link to this definition"></a></dt>
+<dd><p>Test that a PUT to the order detail endpoint with valid data updates an order</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-api.tests.test_users_api">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.tests.test_users_api.</span></span><span class="sig-name descname"><span class="pre">UserViewSetTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.setUp" title="Link to this definition"></a></dt>
+<dd><p>Set up a test user and an admin user, and log in as the test user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_create_user_admin_only">
+<span class="sig-name descname"><span class="pre">test_create_user_admin_only</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_create_user_admin_only"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_create_user_admin_only" title="Link to this definition"></a></dt>
+<dd><p>Test that only an admin user can create a new user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_create_user_non_admin">
+<span class="sig-name descname"><span class="pre">test_create_user_non_admin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_create_user_non_admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_create_user_non_admin" title="Link to this definition"></a></dt>
+<dd><p>Test that a non admin user can not create a new user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_delete_user_admin_only">
+<span class="sig-name descname"><span class="pre">test_delete_user_admin_only</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_delete_user_admin_only"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_delete_user_admin_only" title="Link to this definition"></a></dt>
+<dd><p>Test that only an admin user can delete a user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_delete_user_non_admin">
+<span class="sig-name descname"><span class="pre">test_delete_user_non_admin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_delete_user_non_admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_delete_user_non_admin" title="Link to this definition"></a></dt>
+<dd><p>Test that a non admin user can not delete a user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_list_users_authenticated">
+<span class="sig-name descname"><span class="pre">test_list_users_authenticated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_list_users_authenticated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_list_users_authenticated" title="Link to this definition"></a></dt>
+<dd><p>Test that a user can list all users if they are authenticated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_list_users_unauthenticated">
+<span class="sig-name descname"><span class="pre">test_list_users_unauthenticated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_list_users_unauthenticated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_list_users_unauthenticated" title="Link to this definition"></a></dt>
+<dd><p>Test that a user can not list all users if they are not authenticated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_retrieve_user_authenticated">
+<span class="sig-name descname"><span class="pre">test_retrieve_user_authenticated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_retrieve_user_authenticated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_retrieve_user_authenticated" title="Link to this definition"></a></dt>
+<dd><p>Test that an admin user can retrieve the details of any user if they are authenticated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_retrieve_user_unauthenticated">
+<span class="sig-name descname"><span class="pre">test_retrieve_user_unauthenticated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_retrieve_user_unauthenticated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_retrieve_user_unauthenticated" title="Link to this definition"></a></dt>
+<dd><p>Test that a user can not retrieve the details of any user if they are not authenticated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_update_user_admin_only">
+<span class="sig-name descname"><span class="pre">test_update_user_admin_only</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_update_user_admin_only"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_update_user_admin_only" title="Link to this definition"></a></dt>
+<dd><p>Test that only an admin user can update a user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.tests.test_users_api.UserViewSetTest.test_update_user_non_admin">
+<span class="sig-name descname"><span class="pre">test_update_user_non_admin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/tests/test_users_api.html#UserViewSetTest.test_update_user_non_admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.tests.test_users_api.UserViewSetTest.test_update_user_non_admin" title="Link to this definition"></a></dt>
+<dd><p>Test that a non admin user can not update a user</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dj.html" class="btn btn-neutral float-left" title="Dj Module Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="carts.html" class="btn btn-neutral float-right" title="Carts Module Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DanilaB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

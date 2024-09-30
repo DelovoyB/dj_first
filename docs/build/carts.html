@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carts Module Documentation &mdash; dj_first  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Goods Module Documentation" href="goods.html" />
+    <link rel="prev" title="Api Module Documentation" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dj_first
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dj.html">Dj Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Api Module Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Carts Module Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#carts-application">Carts Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#carts.admin.CartAdmin"><code class="docutils literal notranslate"><span class="pre">CartAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">CartAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">CartAdmin.list_filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartAdmin.media"><code class="docutils literal notranslate"><span class="pre">CartAdmin.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartAdmin.product_display"><code class="docutils literal notranslate"><span class="pre">CartAdmin.product_display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">CartAdmin.search_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartAdmin.user_display"><code class="docutils literal notranslate"><span class="pre">CartAdmin.user_display()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#carts.admin.CartTabAdmin"><code class="docutils literal notranslate"><span class="pre">CartTabAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartTabAdmin.extra"><code class="docutils literal notranslate"><span class="pre">CartTabAdmin.extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartTabAdmin.fields"><code class="docutils literal notranslate"><span class="pre">CartTabAdmin.fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartTabAdmin.media"><code class="docutils literal notranslate"><span class="pre">CartTabAdmin.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartTabAdmin.model"><code class="docutils literal notranslate"><span class="pre">CartTabAdmin.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartTabAdmin.readonly_fields"><code class="docutils literal notranslate"><span class="pre">CartTabAdmin.readonly_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.admin.CartTabAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">CartTabAdmin.search_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#carts.mixins.CartMixin"><code class="docutils literal notranslate"><span class="pre">CartMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.mixins.CartMixin.get_cart"><code class="docutils literal notranslate"><span class="pre">CartMixin.get_cart()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.mixins.CartMixin.render_cart"><code class="docutils literal notranslate"><span class="pre">CartMixin.render_cart()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#carts.models.Cart"><code class="docutils literal notranslate"><span class="pre">Cart</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Cart.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Cart.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.created_timestamp"><code class="docutils literal notranslate"><span class="pre">Cart.created_timestamp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.get_next_by_created_timestamp"><code class="docutils literal notranslate"><span class="pre">Cart.get_next_by_created_timestamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.get_previous_by_created_timestamp"><code class="docutils literal notranslate"><span class="pre">Cart.get_previous_by_created_timestamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.id"><code class="docutils literal notranslate"><span class="pre">Cart.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.objects"><code class="docutils literal notranslate"><span class="pre">Cart.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.product"><code class="docutils literal notranslate"><span class="pre">Cart.product</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.product_id"><code class="docutils literal notranslate"><span class="pre">Cart.product_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.products_price"><code class="docutils literal notranslate"><span class="pre">Cart.products_price()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.quantity"><code class="docutils literal notranslate"><span class="pre">Cart.quantity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.session_key"><code class="docutils literal notranslate"><span class="pre">Cart.session_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.user"><code class="docutils literal notranslate"><span class="pre">Cart.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.Cart.user_id"><code class="docutils literal notranslate"><span class="pre">Cart.user_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#carts.models.CartQueryset"><code class="docutils literal notranslate"><span class="pre">CartQueryset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.CartQueryset.total_price"><code class="docutils literal notranslate"><span class="pre">CartQueryset.total_price()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carts.models.CartQueryset.total_quantity"><code class="docutils literal notranslate"><span class="pre">CartQueryset.total_quantity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#carts.utils.get_user_carts"><code class="docutils literal notranslate"><span class="pre">get_user_carts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#carts.views.CartAddView"><code class="docutils literal notranslate"><span class="pre">CartAddView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.views.CartAddView.post"><code class="docutils literal notranslate"><span class="pre">CartAddView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#carts.views.CartChangeView"><code class="docutils literal notranslate"><span class="pre">CartChangeView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.views.CartChangeView.post"><code class="docutils literal notranslate"><span class="pre">CartChangeView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#carts.views.CartRemoveView"><code class="docutils literal notranslate"><span class="pre">CartRemoveView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.views.CartRemoveView.post"><code class="docutils literal notranslate"><span class="pre">CartRemoveView.post()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#carts-tests">Carts Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#carts.tests.test_models.CartModelTest"><code class="docutils literal notranslate"><span class="pre">CartModelTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carts.tests.test_models.CartModelTest.test_create_cart"><code class="docutils literal notranslate"><span class="pre">CartModelTest.test_create_cart()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="goods.html">Goods Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orders.html">Orders Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users Module Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dj_first</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Carts Module Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/carts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="carts-module-documentation">
+<h1>Carts Module Documentation<a class="headerlink" href="#carts-module-documentation" title="Link to this heading"></a></h1>
+<section id="carts-application">
+<h2>Carts Application<a class="headerlink" href="#carts-application" title="Link to this heading"></a></h2>
+<dl class="py class" id="module-carts.admin">
+<dt class="sig sig-object py" id="carts.admin.CartAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.admin.</span></span><span class="sig-name descname"><span class="pre">CartAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/admin.html#CartAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.admin.CartAdmin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.admin.CartAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['user_display',</span> <span class="pre">'product_display',</span> <span class="pre">'quantity',</span> <span class="pre">'created_timestamp']</span></em><a class="headerlink" href="#carts.admin.CartAdmin.list_display" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.admin.CartAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['user',</span> <span class="pre">'product__name',</span> <span class="pre">'created_timestamp']</span></em><a class="headerlink" href="#carts.admin.CartAdmin.list_filter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="carts.admin.CartAdmin.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#carts.admin.CartAdmin.media" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.admin.CartAdmin.product_display">
+<span class="sig-name descname"><span class="pre">product_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/admin.html#CartAdmin.product_display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.admin.CartAdmin.product_display" title="Link to this definition"></a></dt>
+<dd><p>Return the name of the product associated with the cart.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.admin.CartAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['user']</span></em><a class="headerlink" href="#carts.admin.CartAdmin.search_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.admin.CartAdmin.user_display">
+<span class="sig-name descname"><span class="pre">user_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/admin.html#CartAdmin.user_display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.admin.CartAdmin.user_display" title="Link to this definition"></a></dt>
+<dd><p>Return the user associated with the cart, or “Anonymous user” if the
+cart is anonymous.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="carts.admin.CartTabAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.admin.</span></span><span class="sig-name descname"><span class="pre">CartTabAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/admin.html#CartTabAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.admin.CartTabAdmin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TabularInline</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.admin.CartTabAdmin.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#carts.admin.CartTabAdmin.extra" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.admin.CartTabAdmin.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('product',</span> <span class="pre">'quantity',</span> <span class="pre">'created_timestamp')</span></em><a class="headerlink" href="#carts.admin.CartTabAdmin.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="carts.admin.CartTabAdmin.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#carts.admin.CartTabAdmin.media" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.admin.CartTabAdmin.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#carts.admin.CartTabAdmin.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#carts.models.Cart" title="carts.models.Cart"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cart</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.admin.CartTabAdmin.readonly_fields">
+<span class="sig-name descname"><span class="pre">readonly_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('created_timestamp',)</span></em><a class="headerlink" href="#carts.admin.CartTabAdmin.readonly_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.admin.CartTabAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('product',</span> <span class="pre">'quantity',</span> <span class="pre">'created_timestamp')</span></em><a class="headerlink" href="#carts.admin.CartTabAdmin.search_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-carts.mixins">
+<dt class="sig sig-object py" id="carts.mixins.CartMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.mixins.</span></span><span class="sig-name descname"><span class="pre">CartMixin</span></span><a class="reference internal" href="_modules/carts/mixins.html#CartMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.mixins.CartMixin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.mixins.CartMixin.get_cart">
+<span class="sig-name descname"><span class="pre">get_cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cart_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/mixins.html#CartMixin.get_cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.mixins.CartMixin.get_cart" title="Link to this definition"></a></dt>
+<dd><p>Get a cart object, either by product or id, or get a user’s cart object if not specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<em>Request</em>) – The request object to check if the user is authenticated.</p></li>
+<li><p><strong>product</strong> (<a class="reference internal" href="goods.html#goods.models.Products" title="goods.models.Products"><em>Products</em></a><em>, </em><em>optional</em>) – The product to get the cart for. Defaults to None.</p></li>
+<li><p><strong>cart_id</strong> (<em>int</em><em>, </em><em>optional</em>) – The id of the cart to get. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The cart object that matches the given criteria, or None if no match is found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#carts.models.Cart" title="carts.models.Cart">Cart</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.mixins.CartMixin.render_cart">
+<span class="sig-name descname"><span class="pre">render_cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/mixins.html#CartMixin.render_cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.mixins.CartMixin.render_cart" title="Link to this definition"></a></dt>
+<dd><p>Render the cart template with the given request object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The request object to get the cart items for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The rendered template as a string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-carts.models">
+<dt class="sig sig-object py" id="carts.models.Cart">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.models.</span></span><span class="sig-name descname"><span class="pre">Cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_timestamp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/models.html#Cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.models.Cart" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="carts.models.Cart.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#carts.models.Cart.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="carts.models.Cart.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#carts.models.Cart.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.created_timestamp">
+<span class="sig-name descname"><span class="pre">created_timestamp</span></span><a class="headerlink" href="#carts.models.Cart.created_timestamp" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.models.Cart.get_next_by_created_timestamp">
+<span class="sig-name descname"><span class="pre">get_next_by_created_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_timestamp&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#carts.models.Cart.get_next_by_created_timestamp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.models.Cart.get_previous_by_created_timestamp">
+<span class="sig-name descname"><span class="pre">get_previous_by_created_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_timestamp&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#carts.models.Cart.get_previous_by_created_timestamp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#carts.models.Cart.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.ManagerFromCartQueryset</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#carts.models.Cart.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.product">
+<span class="sig-name descname"><span class="pre">product</span></span><a class="headerlink" href="#carts.models.Cart.product" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.product_id">
+<span class="sig-name descname"><span class="pre">product_id</span></span><a class="headerlink" href="#carts.models.Cart.product_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.models.Cart.products_price">
+<span class="sig-name descname"><span class="pre">products_price</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/models.html#Cart.products_price"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.models.Cart.products_price" title="Link to this definition"></a></dt>
+<dd><p>Returns the total price of all items in the cart.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The total price of all items in the cart.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.quantity">
+<span class="sig-name descname"><span class="pre">quantity</span></span><a class="headerlink" href="#carts.models.Cart.quantity" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.session_key">
+<span class="sig-name descname"><span class="pre">session_key</span></span><a class="headerlink" href="#carts.models.Cart.session_key" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#carts.models.Cart.user" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="carts.models.Cart.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#carts.models.Cart.user_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="carts.models.CartQueryset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.models.</span></span><span class="sig-name descname"><span class="pre">CartQueryset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/models.html#CartQueryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.models.CartQueryset" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.models.CartQueryset.total_price">
+<span class="sig-name descname"><span class="pre">total_price</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/models.html#CartQueryset.total_price"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.models.CartQueryset.total_price" title="Link to this definition"></a></dt>
+<dd><p>Returns the total price of all items in the cart.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.models.CartQueryset.total_quantity">
+<span class="sig-name descname"><span class="pre">total_quantity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/models.html#CartQueryset.total_quantity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.models.CartQueryset.total_quantity" title="Link to this definition"></a></dt>
+<dd><p>Returns the total quantity of all items in the cart.
+If the cart is empty, it returns 0.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function" id="module-carts.utils">
+<dt class="sig sig-object py" id="carts.utils.get_user_carts">
+<span class="sig-prename descclassname"><span class="pre">carts.utils.</span></span><span class="sig-name descname"><span class="pre">get_user_carts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/utils.html#get_user_carts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.utils.get_user_carts" title="Link to this definition"></a></dt>
+<dd><p>Get a user’s carts from the database.</p>
+<p>If the user is authenticated, we query the database with the user’s id.
+If the user is not authenticated, we query the database with the session key.
+If the session key doesn’t exist yet, we create it.</p>
+<p>Returns a QuerySet of Cart objects related to the user.</p>
+</dd></dl>
+
+<dl class="py class" id="module-carts.views">
+<dt class="sig sig-object py" id="carts.views.CartAddView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.views.</span></span><span class="sig-name descname"><span class="pre">CartAddView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/views.html#CartAddView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.views.CartAddView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#carts.mixins.CartMixin" title="carts.mixins.CartMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CartMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.views.CartAddView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/views.html#CartAddView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.views.CartAddView.post" title="Link to this definition"></a></dt>
+<dd><p>Add a product to the user’s cart.</p>
+<p>Given a product ID from a POST request, either increase the quantity of a
+cart item if the product is already in the cart, or create a new cart item
+if the product is not in the cart.</p>
+<p>Returns a JSON response with a message and the HTML of the updated cart
+items.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="carts.views.CartChangeView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.views.</span></span><span class="sig-name descname"><span class="pre">CartChangeView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/views.html#CartChangeView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.views.CartChangeView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#carts.mixins.CartMixin" title="carts.mixins.CartMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CartMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.views.CartChangeView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/views.html#CartChangeView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.views.CartChangeView.post" title="Link to this definition"></a></dt>
+<dd><p>Change the quantity of a product in the user’s cart.</p>
+<p>Given a product ID and new quantity from a POST request, update the
+quantity of the cart item. Returns a JSON response with a message, the
+new quantity, and the HTML of the updated cart items.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="carts.views.CartRemoveView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.views.</span></span><span class="sig-name descname"><span class="pre">CartRemoveView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/views.html#CartRemoveView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.views.CartRemoveView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#carts.mixins.CartMixin" title="carts.mixins.CartMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CartMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.views.CartRemoveView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/views.html#CartRemoveView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.views.CartRemoveView.post" title="Link to this definition"></a></dt>
+<dd><p>Remove a product from the user’s cart.</p>
+<p>Given a cart ID from a POST request, delete the cart item and return a
+JSON response with a message, the quantity of the deleted item, and the
+HTML of the updated cart items.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="carts-tests">
+<h2>Carts Tests<a class="headerlink" href="#carts-tests" title="Link to this heading"></a></h2>
+<dl class="py class" id="module-carts.tests.test_models">
+<dt class="sig sig-object py" id="carts.tests.test_models.CartModelTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">carts.tests.test_models.</span></span><span class="sig-name descname"><span class="pre">CartModelTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/tests/test_models.html#CartModelTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.tests.test_models.CartModelTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="carts.tests.test_models.CartModelTest.test_create_cart">
+<span class="sig-name descname"><span class="pre">test_create_cart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/carts/tests/test_models.html#CartModelTest.test_create_cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.tests.test_models.CartModelTest.test_create_cart" title="Link to this definition"></a></dt>
+<dd><p>Test that a cart can be created with valid user, product, quantity, session key and created timestamp.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">full_clean</span></code> method is called to ensure that the cart is valid
+according to the model’s field definitions. The <code class="docutils literal notranslate"><span class="pre">save</span></code> method is then
+called to persist the cart to the database.</p>
+<p>The test then checks that the cart has been created with the expected
+user, product, quantity, session key and created timestamp.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api.html" class="btn btn-neutral float-left" title="Api Module Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="goods.html" class="btn btn-neutral float-right" title="Goods Module Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DanilaB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

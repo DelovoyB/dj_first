@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goods Module Documentation &mdash; dj_first  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Main Module Documentation" href="main.html" />
+    <link rel="prev" title="Carts Module Documentation" href="carts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dj_first
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dj.html">Dj Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Api Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="carts.html">Carts Module Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Goods Module Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#goods-application">Goods Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#goods.models.Categories"><code class="docutils literal notranslate"><span class="pre">Categories</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Categories.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Categories.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Categories.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Categories.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Categories.id"><code class="docutils literal notranslate"><span class="pre">Categories.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Categories.name"><code class="docutils literal notranslate"><span class="pre">Categories.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Categories.objects"><code class="docutils literal notranslate"><span class="pre">Categories.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Categories.products_set"><code class="docutils literal notranslate"><span class="pre">Categories.products_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Categories.slug"><code class="docutils literal notranslate"><span class="pre">Categories.slug</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#goods.models.Products"><code class="docutils literal notranslate"><span class="pre">Products</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Products.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Products.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.cart_set"><code class="docutils literal notranslate"><span class="pre">Products.cart_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.category"><code class="docutils literal notranslate"><span class="pre">Products.category</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.category_id"><code class="docutils literal notranslate"><span class="pre">Products.category_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.description"><code class="docutils literal notranslate"><span class="pre">Products.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.discount"><code class="docutils literal notranslate"><span class="pre">Products.discount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.get_absolute_url"><code class="docutils literal notranslate"><span class="pre">Products.get_absolute_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.id"><code class="docutils literal notranslate"><span class="pre">Products.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.image"><code class="docutils literal notranslate"><span class="pre">Products.image</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.name"><code class="docutils literal notranslate"><span class="pre">Products.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.objects"><code class="docutils literal notranslate"><span class="pre">Products.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.orderitem_set"><code class="docutils literal notranslate"><span class="pre">Products.orderitem_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.price"><code class="docutils literal notranslate"><span class="pre">Products.price</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.quantity"><code class="docutils literal notranslate"><span class="pre">Products.quantity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.sell_price"><code class="docutils literal notranslate"><span class="pre">Products.sell_price()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.models.Products.slug"><code class="docutils literal notranslate"><span class="pre">Products.slug</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#goods.utils.q_search"><code class="docutils literal notranslate"><span class="pre">q_search()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#goods.views.CatalogView"><code class="docutils literal notranslate"><span class="pre">CatalogView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.CatalogView.allow_empty"><code class="docutils literal notranslate"><span class="pre">CatalogView.allow_empty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.CatalogView.context_object_name"><code class="docutils literal notranslate"><span class="pre">CatalogView.context_object_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.CatalogView.get_context_data"><code class="docutils literal notranslate"><span class="pre">CatalogView.get_context_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.CatalogView.get_queryset"><code class="docutils literal notranslate"><span class="pre">CatalogView.get_queryset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.CatalogView.model"><code class="docutils literal notranslate"><span class="pre">CatalogView.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.CatalogView.paginate_by"><code class="docutils literal notranslate"><span class="pre">CatalogView.paginate_by</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.CatalogView.template_name"><code class="docutils literal notranslate"><span class="pre">CatalogView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#goods.views.ProductView"><code class="docutils literal notranslate"><span class="pre">ProductView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.ProductView.context_object_name"><code class="docutils literal notranslate"><span class="pre">ProductView.context_object_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.ProductView.get_context_data"><code class="docutils literal notranslate"><span class="pre">ProductView.get_context_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.ProductView.get_object"><code class="docutils literal notranslate"><span class="pre">ProductView.get_object()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goods.views.ProductView.template_name"><code class="docutils literal notranslate"><span class="pre">ProductView.template_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#goods-tests">Goods Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#goods.tests.test_models.CategoryModelTest"><code class="docutils literal notranslate"><span class="pre">CategoryModelTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#goods.tests.test_models.CategoryModelTest.test_create_category"><code class="docutils literal notranslate"><span class="pre">CategoryModelTest.test_create_category()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#goods.tests.test_models.ProductModelTest"><code class="docutils literal notranslate"><span class="pre">ProductModelTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#goods.tests.test_models.ProductModelTest.test_create_product"><code class="docutils literal notranslate"><span class="pre">ProductModelTest.test_create_product()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orders.html">Orders Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users Module Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dj_first</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Goods Module Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/goods.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="goods-module-documentation">
+<h1>Goods Module Documentation<a class="headerlink" href="#goods-module-documentation" title="Link to this heading"></a></h1>
+<section id="goods-application">
+<h2>Goods Application<a class="headerlink" href="#goods-application" title="Link to this heading"></a></h2>
+<dl class="py class" id="module-goods.models">
+<dt class="sig sig-object py" id="goods.models.Categories">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">goods.models.</span></span><span class="sig-name descname"><span class="pre">Categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/models.html#Categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.models.Categories" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="goods.models.Categories.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#goods.models.Categories.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="goods.models.Categories.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#goods.models.Categories.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Categories.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#goods.models.Categories.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Categories.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#goods.models.Categories.name" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Categories.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#goods.models.Categories.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Categories.products_set">
+<span class="sig-name descname"><span class="pre">products_set</span></span><a class="headerlink" href="#goods.models.Categories.products_set" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Categories.slug">
+<span class="sig-name descname"><span class="pre">slug</span></span><a class="headerlink" href="#goods.models.Categories.slug" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="goods.models.Products">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">goods.models.</span></span><span class="sig-name descname"><span class="pre">Products</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slug</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/models.html#Products"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.models.Products" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="goods.models.Products.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#goods.models.Products.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="goods.models.Products.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#goods.models.Products.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.cart_set">
+<span class="sig-name descname"><span class="pre">cart_set</span></span><a class="headerlink" href="#goods.models.Products.cart_set" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.category">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#goods.models.Products.category" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.category_id">
+<span class="sig-name descname"><span class="pre">category_id</span></span><a class="headerlink" href="#goods.models.Products.category_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#goods.models.Products.description" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.discount">
+<span class="sig-name descname"><span class="pre">discount</span></span><a class="headerlink" href="#goods.models.Products.discount" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="goods.models.Products.get_absolute_url">
+<span class="sig-name descname"><span class="pre">get_absolute_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/models.html#Products.get_absolute_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.models.Products.get_absolute_url" title="Link to this definition"></a></dt>
+<dd><p>Returns the URL of the product detail page as a string.</p>
+<p>The URL is in the format of ‘/catalog/&lt;product_slug&gt;/’ where &lt;product_slug&gt;
+is the slug of the product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The URL of the product detail page.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#goods.models.Products.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.image">
+<span class="sig-name descname"><span class="pre">image</span></span><a class="headerlink" href="#goods.models.Products.image" title="Link to this definition"></a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#goods.models.Products.name" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#goods.models.Products.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.orderitem_set">
+<span class="sig-name descname"><span class="pre">orderitem_set</span></span><a class="headerlink" href="#goods.models.Products.orderitem_set" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.price">
+<span class="sig-name descname"><span class="pre">price</span></span><a class="headerlink" href="#goods.models.Products.price" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.quantity">
+<span class="sig-name descname"><span class="pre">quantity</span></span><a class="headerlink" href="#goods.models.Products.quantity" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="goods.models.Products.sell_price">
+<span class="sig-name descname"><span class="pre">sell_price</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/models.html#Products.sell_price"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.models.Products.sell_price" title="Link to this definition"></a></dt>
+<dd><p>Returns the selling price of the product as a float.</p>
+<p>If the product has a discount (discount &gt; 0), it will return the selling price
+of the product, which is the price minus the discount. Otherwise, it will return
+the price as the selling price.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The selling price of the product.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.models.Products.slug">
+<span class="sig-name descname"><span class="pre">slug</span></span><a class="headerlink" href="#goods.models.Products.slug" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function" id="module-goods.utils">
+<dt class="sig sig-object py" id="goods.utils.q_search">
+<span class="sig-prename descclassname"><span class="pre">goods.utils.</span></span><span class="sig-name descname"><span class="pre">q_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/utils.html#q_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.utils.q_search" title="Link to this definition"></a></dt>
+<dd><p>Search for products by query.</p>
+<p>If the query is a number and less than or equal to 5 digits, search by id.
+If the query is a string, search by name and description using the PostgreSQL full text search.</p>
+<p>Returns a QuerySet of Products objects that match the query.</p>
+</dd></dl>
+
+<dl class="py class" id="module-goods.views">
+<dt class="sig sig-object py" id="goods.views.CatalogView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">goods.views.</span></span><span class="sig-name descname"><span class="pre">CatalogView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/views.html#CatalogView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.views.CatalogView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListView</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.views.CatalogView.allow_empty">
+<span class="sig-name descname"><span class="pre">allow_empty</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#goods.views.CatalogView.allow_empty" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.views.CatalogView.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'goods'</span></em><a class="headerlink" href="#goods.views.CatalogView.context_object_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="goods.views.CatalogView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/views.html#CatalogView.get_context_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.views.CatalogView.get_context_data" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary with the given keyword arguments and the following
+additional context variables:</p>
+<ul class="simple">
+<li><p>title: The title of the page, which is ‘Shop’.</p></li>
+<li><p>slug_url: The slug of the category given in the URL parameters.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary with the additional context variables.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="goods.views.CatalogView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/views.html#CatalogView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.views.CatalogView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Returns a filtered queryset of Products based on the given request
+parameters.</p>
+<ul class="simple">
+<li><p>If the category_slug parameter is ‘all’, it returns all products.</p></li>
+<li><p>If the q parameter is given, it performs a full-text search on the
+product name and description.</p></li>
+<li><p>Otherwise, it filters the products by the given category slug.</p></li>
+<li><p>If the on_sale parameter is given, it filters the products that have
+a discount greater than zero.</p></li>
+<li><p>If the order_by parameter is given, it sorts the products by the
+given field name.</p></li>
+</ul>
+<p>If the filtered queryset is empty, it raises a 404 error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A filtered queryset of Product objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>QuerySet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.views.CatalogView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#goods.views.CatalogView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#goods.models.Products" title="goods.models.Products"><code class="xref py py-class docutils literal notranslate"><span class="pre">Products</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.views.CatalogView.paginate_by">
+<span class="sig-name descname"><span class="pre">paginate_by</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#goods.views.CatalogView.paginate_by" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.views.CatalogView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'goods/catalog.html'</span></em><a class="headerlink" href="#goods.views.CatalogView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="goods.views.ProductView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">goods.views.</span></span><span class="sig-name descname"><span class="pre">ProductView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/views.html#ProductView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.views.ProductView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CacheMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DetailView</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.views.ProductView.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'product'</span></em><a class="headerlink" href="#goods.views.ProductView.context_object_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="goods.views.ProductView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/views.html#ProductView.get_context_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.views.ProductView.get_context_data" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary with the given keyword arguments and the following
+additional context variables:</p>
+<ul class="simple">
+<li><p>title: The title of the page, which is the name of the product.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary with the additional context variables.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="goods.views.ProductView.get_object">
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queryset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/views.html#ProductView.get_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.views.ProductView.get_object" title="Link to this definition"></a></dt>
+<dd><p>Returns a Product object by slug from the URL parameters.</p>
+<p>The product is retrieved from the cache if it exists, otherwise it is
+retrieved from the database and cached for 30 seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The product object with the given slug.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Product</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="goods.views.ProductView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'goods/product.html'</span></em><a class="headerlink" href="#goods.views.ProductView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="goods-tests">
+<h2>Goods Tests<a class="headerlink" href="#goods-tests" title="Link to this heading"></a></h2>
+<dl class="py class" id="module-goods.tests.test_models">
+<dt class="sig sig-object py" id="goods.tests.test_models.CategoryModelTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">goods.tests.test_models.</span></span><span class="sig-name descname"><span class="pre">CategoryModelTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/tests/test_models.html#CategoryModelTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.tests.test_models.CategoryModelTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="goods.tests.test_models.CategoryModelTest.test_create_category">
+<span class="sig-name descname"><span class="pre">test_create_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/goods/tests/test_models.html#CategoryModelTest.test_create_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.tests.test_models.CategoryModelTest.test_create_category" title="Link to this definition"></a></dt>
+<dd><p>Test that a category can be created with a valid name and slug.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">full_clean</span></code> method is called to ensure that the category is valid
+according to the model’s field definitions. The <code class="docutils literal notranslate"><span class="pre">save</span></code> method is then
+called to persist the category to the database.</p>
+<p>The test then checks that the category has been created with the expected
+name and slug.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="goods.tests.test_models.ProductModelTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">goods.tests.test_models.</span></span><span class="sig-name descname"><span class="pre">ProductModelTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/goods/tests/test_models.html#ProductModelTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.tests.test_models.ProductModelTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="goods.tests.test_models.ProductModelTest.test_create_product">
+<span class="sig-name descname"><span class="pre">test_create_product</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/goods/tests/test_models.html#ProductModelTest.test_create_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#goods.tests.test_models.ProductModelTest.test_create_product" title="Link to this definition"></a></dt>
+<dd><p>Test that a product can be created with valid name, slug, description, image, price, discount, quantity and category.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">full_clean</span></code> method is called to ensure that the product is valid
+according to the model’s field definitions. The <code class="docutils literal notranslate"><span class="pre">save</span></code> method is then
+called to persist the product to the database.</p>
+<p>The test then checks that the product has been created with the expected
+name, slug, description, image, price, discount, quantity and category.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="carts.html" class="btn btn-neutral float-left" title="Carts Module Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="main.html" class="btn btn-neutral float-right" title="Main Module Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DanilaB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

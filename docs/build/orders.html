@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orders Module Documentation &mdash; dj_first  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Users Module Documentation" href="users.html" />
+    <link rel="prev" title="Main Module Documentation" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dj_first
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dj.html">Dj Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Api Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="carts.html">Carts Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goods.html">Goods Module Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Orders Module Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#orders-application">Orders Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#orders.forms.CreateOrderForm"><code class="docutils literal notranslate"><span class="pre">CreateOrderForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#orders.forms.CreateOrderForm.base_fields"><code class="docutils literal notranslate"><span class="pre">CreateOrderForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.forms.CreateOrderForm.clean_phone_number"><code class="docutils literal notranslate"><span class="pre">CreateOrderForm.clean_phone_number()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.forms.CreateOrderForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">CreateOrderForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.forms.CreateOrderForm.media"><code class="docutils literal notranslate"><span class="pre">CreateOrderForm.media</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#orders.models.Order"><code class="docutils literal notranslate"><span class="pre">Order</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Order.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Order.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.created_timestamp"><code class="docutils literal notranslate"><span class="pre">Order.created_timestamp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.delivery_address"><code class="docutils literal notranslate"><span class="pre">Order.delivery_address</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.get_next_by_created_timestamp"><code class="docutils literal notranslate"><span class="pre">Order.get_next_by_created_timestamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.get_previous_by_created_timestamp"><code class="docutils literal notranslate"><span class="pre">Order.get_previous_by_created_timestamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.id"><code class="docutils literal notranslate"><span class="pre">Order.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.is_paid"><code class="docutils literal notranslate"><span class="pre">Order.is_paid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.objects"><code class="docutils literal notranslate"><span class="pre">Order.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.orderitem_set"><code class="docutils literal notranslate"><span class="pre">Order.orderitem_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.payment_on_get"><code class="docutils literal notranslate"><span class="pre">Order.payment_on_get</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.phone_number"><code class="docutils literal notranslate"><span class="pre">Order.phone_number</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.requires_delivery"><code class="docutils literal notranslate"><span class="pre">Order.requires_delivery</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.status"><code class="docutils literal notranslate"><span class="pre">Order.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.user"><code class="docutils literal notranslate"><span class="pre">Order.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.Order.user_id"><code class="docutils literal notranslate"><span class="pre">Order.user_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#orders.models.OrderItem"><code class="docutils literal notranslate"><span class="pre">OrderItem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">OrderItem.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">OrderItem.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.created_timestamp"><code class="docutils literal notranslate"><span class="pre">OrderItem.created_timestamp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.get_next_by_created_timestamp"><code class="docutils literal notranslate"><span class="pre">OrderItem.get_next_by_created_timestamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.get_previous_by_created_timestamp"><code class="docutils literal notranslate"><span class="pre">OrderItem.get_previous_by_created_timestamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.id"><code class="docutils literal notranslate"><span class="pre">OrderItem.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.name"><code class="docutils literal notranslate"><span class="pre">OrderItem.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.objects"><code class="docutils literal notranslate"><span class="pre">OrderItem.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.order"><code class="docutils literal notranslate"><span class="pre">OrderItem.order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.order_id"><code class="docutils literal notranslate"><span class="pre">OrderItem.order_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.price"><code class="docutils literal notranslate"><span class="pre">OrderItem.price</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.product"><code class="docutils literal notranslate"><span class="pre">OrderItem.product</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.product_id"><code class="docutils literal notranslate"><span class="pre">OrderItem.product_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.products_price"><code class="docutils literal notranslate"><span class="pre">OrderItem.products_price()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderItem.quantity"><code class="docutils literal notranslate"><span class="pre">OrderItem.quantity</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#orders.models.OrderitemQueryset"><code class="docutils literal notranslate"><span class="pre">OrderitemQueryset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderitemQueryset.total_price"><code class="docutils literal notranslate"><span class="pre">OrderitemQueryset.total_price()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.models.OrderitemQueryset.total_quantity"><code class="docutils literal notranslate"><span class="pre">OrderitemQueryset.total_quantity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#orders.views.CreateOrderView"><code class="docutils literal notranslate"><span class="pre">CreateOrderView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#orders.views.CreateOrderView.form_class"><code class="docutils literal notranslate"><span class="pre">CreateOrderView.form_class</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.views.CreateOrderView.form_invalid"><code class="docutils literal notranslate"><span class="pre">CreateOrderView.form_invalid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.views.CreateOrderView.form_valid"><code class="docutils literal notranslate"><span class="pre">CreateOrderView.form_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.views.CreateOrderView.get_context_data"><code class="docutils literal notranslate"><span class="pre">CreateOrderView.get_context_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.views.CreateOrderView.get_initial"><code class="docutils literal notranslate"><span class="pre">CreateOrderView.get_initial()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.views.CreateOrderView.success_url"><code class="docutils literal notranslate"><span class="pre">CreateOrderView.success_url</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orders.views.CreateOrderView.template_name"><code class="docutils literal notranslate"><span class="pre">CreateOrderView.template_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#orders-tests">Orders Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#orders.tests.test_models.OrderItemModelTest"><code class="docutils literal notranslate"><span class="pre">OrderItemModelTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#orders.tests.test_models.OrderItemModelTest.test_create_order_item"><code class="docutils literal notranslate"><span class="pre">OrderItemModelTest.test_create_order_item()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#orders.tests.test_models.OrderModelTest"><code class="docutils literal notranslate"><span class="pre">OrderModelTest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#orders.tests.test_models.OrderModelTest.test_create_order"><code class="docutils literal notranslate"><span class="pre">OrderModelTest.test_create_order()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users Module Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dj_first</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Orders Module Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/orders.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="orders-module-documentation">
+<h1>Orders Module Documentation<a class="headerlink" href="#orders-module-documentation" title="Link to this heading"></a></h1>
+<section id="orders-application">
+<h2>Orders Application<a class="headerlink" href="#orders-application" title="Link to this heading"></a></h2>
+<dl class="py class" id="module-orders.forms">
+<dt class="sig sig-object py" id="orders.forms.CreateOrderForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">orders.forms.</span></span><span class="sig-name descname"><span class="pre">CreateOrderForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_order=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/forms.html#CreateOrderForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.forms.CreateOrderForm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Form</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.forms.CreateOrderForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'delivery_address':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'first_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'last_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'payment_on_get':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'phone_number':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'requires_delivery':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#orders.forms.CreateOrderForm.base_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.forms.CreateOrderForm.clean_phone_number">
+<span class="sig-name descname"><span class="pre">clean_phone_number</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/forms.html#CreateOrderForm.clean_phone_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.forms.CreateOrderForm.clean_phone_number" title="Link to this definition"></a></dt>
+<dd><p>Validation for phone number field.</p>
+<p>Check that the phone number field contains only 10 digits and raise
+ValidationError if not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.forms.CreateOrderForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'delivery_address':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'first_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'last_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'payment_on_get':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'phone_number':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'requires_delivery':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#orders.forms.CreateOrderForm.declared_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="orders.forms.CreateOrderForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#orders.forms.CreateOrderForm.media" title="Link to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-orders.models">
+<dt class="sig sig-object py" id="orders.models.Order">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">orders.models.</span></span><span class="sig-name descname"><span class="pre">Order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_timestamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_delivery</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delivery_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payment_on_get</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_paid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/models.html#Order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.models.Order" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="orders.models.Order.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#orders.models.Order.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="orders.models.Order.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#orders.models.Order.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.created_timestamp">
+<span class="sig-name descname"><span class="pre">created_timestamp</span></span><a class="headerlink" href="#orders.models.Order.created_timestamp" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.delivery_address">
+<span class="sig-name descname"><span class="pre">delivery_address</span></span><a class="headerlink" href="#orders.models.Order.delivery_address" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.models.Order.get_next_by_created_timestamp">
+<span class="sig-name descname"><span class="pre">get_next_by_created_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_timestamp&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orders.models.Order.get_next_by_created_timestamp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.models.Order.get_previous_by_created_timestamp">
+<span class="sig-name descname"><span class="pre">get_previous_by_created_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_timestamp&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orders.models.Order.get_previous_by_created_timestamp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#orders.models.Order.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.is_paid">
+<span class="sig-name descname"><span class="pre">is_paid</span></span><a class="headerlink" href="#orders.models.Order.is_paid" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#orders.models.Order.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.orderitem_set">
+<span class="sig-name descname"><span class="pre">orderitem_set</span></span><a class="headerlink" href="#orders.models.Order.orderitem_set" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.payment_on_get">
+<span class="sig-name descname"><span class="pre">payment_on_get</span></span><a class="headerlink" href="#orders.models.Order.payment_on_get" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.phone_number">
+<span class="sig-name descname"><span class="pre">phone_number</span></span><a class="headerlink" href="#orders.models.Order.phone_number" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.requires_delivery">
+<span class="sig-name descname"><span class="pre">requires_delivery</span></span><a class="headerlink" href="#orders.models.Order.requires_delivery" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#orders.models.Order.status" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#orders.models.Order.user" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.Order.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#orders.models.Order.user_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="orders.models.OrderItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">orders.models.</span></span><span class="sig-name descname"><span class="pre">OrderItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_timestamp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/models.html#OrderItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.models.OrderItem" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="orders.models.OrderItem.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#orders.models.OrderItem.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="orders.models.OrderItem.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#orders.models.OrderItem.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.created_timestamp">
+<span class="sig-name descname"><span class="pre">created_timestamp</span></span><a class="headerlink" href="#orders.models.OrderItem.created_timestamp" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.models.OrderItem.get_next_by_created_timestamp">
+<span class="sig-name descname"><span class="pre">get_next_by_created_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_timestamp&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orders.models.OrderItem.get_next_by_created_timestamp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.models.OrderItem.get_previous_by_created_timestamp">
+<span class="sig-name descname"><span class="pre">get_previous_by_created_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_timestamp&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orders.models.OrderItem.get_previous_by_created_timestamp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#orders.models.OrderItem.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#orders.models.OrderItem.name" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.ManagerFromOrderitemQueryset</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#orders.models.OrderItem.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.order">
+<span class="sig-name descname"><span class="pre">order</span></span><a class="headerlink" href="#orders.models.OrderItem.order" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.order_id">
+<span class="sig-name descname"><span class="pre">order_id</span></span><a class="headerlink" href="#orders.models.OrderItem.order_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.price">
+<span class="sig-name descname"><span class="pre">price</span></span><a class="headerlink" href="#orders.models.OrderItem.price" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.product">
+<span class="sig-name descname"><span class="pre">product</span></span><a class="headerlink" href="#orders.models.OrderItem.product" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.product_id">
+<span class="sig-name descname"><span class="pre">product_id</span></span><a class="headerlink" href="#orders.models.OrderItem.product_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.models.OrderItem.products_price">
+<span class="sig-name descname"><span class="pre">products_price</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/models.html#OrderItem.products_price"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.models.OrderItem.products_price" title="Link to this definition"></a></dt>
+<dd><p>Returns the total price of all items in the order item as a float.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.models.OrderItem.quantity">
+<span class="sig-name descname"><span class="pre">quantity</span></span><a class="headerlink" href="#orders.models.OrderItem.quantity" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="orders.models.OrderitemQueryset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">orders.models.</span></span><span class="sig-name descname"><span class="pre">OrderitemQueryset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/models.html#OrderitemQueryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.models.OrderitemQueryset" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.models.OrderitemQueryset.total_price">
+<span class="sig-name descname"><span class="pre">total_price</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/models.html#OrderitemQueryset.total_price"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.models.OrderitemQueryset.total_price" title="Link to this definition"></a></dt>
+<dd><p>Returns the total price of all items in the cart.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The total price of all items in the cart.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.models.OrderitemQueryset.total_quantity">
+<span class="sig-name descname"><span class="pre">total_quantity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/models.html#OrderitemQueryset.total_quantity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.models.OrderitemQueryset.total_quantity" title="Link to this definition"></a></dt>
+<dd><p>Returns the total quantity of all items in the cart.
+If the cart is empty, it returns 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The total quantity of all items in the cart.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-orders.views">
+<span id="module-orders.tasks"></span><dt class="sig sig-object py" id="orders.views.CreateOrderView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">orders.views.</span></span><span class="sig-name descname"><span class="pre">CreateOrderView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/views.html#CreateOrderView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.views.CreateOrderView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FormView</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.views.CreateOrderView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#orders.views.CreateOrderView.form_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#orders.forms.CreateOrderForm" title="orders.forms.CreateOrderForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CreateOrderForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.views.CreateOrderView.form_invalid">
+<span class="sig-name descname"><span class="pre">form_invalid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/views.html#CreateOrderView.form_invalid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.views.CreateOrderView.form_invalid" title="Link to this definition"></a></dt>
+<dd><p>If the form is invalid, redirect back to the checkout page with
+an error message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.views.CreateOrderView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/views.html#CreateOrderView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.views.CreateOrderView.form_valid" title="Link to this definition"></a></dt>
+<dd><p>If the form is valid, create a new order and order items based on the
+items in the cart and the form data.</p>
+<p>If there is not enough stock for a product in the cart, raise a
+ValidationError. If there is enough stock, create a new order item and
+deduct the quantity of the order item from the product’s quantity.</p>
+<p>After the order is created, send an email to the user with the order
+details.</p>
+<p>If there is an error creating the order, return a redirect to the create
+order view with a warning message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.views.CreateOrderView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/views.html#CreateOrderView.get_context_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.views.CreateOrderView.get_context_data" title="Link to this definition"></a></dt>
+<dd><p>Set the context data for the checkout page.</p>
+<p>The context data includes the page title, whether the page is an order
+page, and whether to disable the modal cart.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The context data for the checkout page.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.views.CreateOrderView.get_initial">
+<span class="sig-name descname"><span class="pre">get_initial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/views.html#CreateOrderView.get_initial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.views.CreateOrderView.get_initial" title="Link to this definition"></a></dt>
+<dd><p>Return the initial data for the form.</p>
+<p>The initial data is set as follows:</p>
+<ul class="simple">
+<li><p>first_name: The first name of the current user.</p></li>
+<li><p>last_name: The last name of the current user.</p></li>
+</ul>
+<p>The initial data is then passed to the form to be used as the initial values of the form fields.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.views.CreateOrderView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/user/profile'</span></em><a class="headerlink" href="#orders.views.CreateOrderView.success_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="orders.views.CreateOrderView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'orders/create_order.html'</span></em><a class="headerlink" href="#orders.views.CreateOrderView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="orders-tests">
+<h2>Orders Tests<a class="headerlink" href="#orders-tests" title="Link to this heading"></a></h2>
+<dl class="py class" id="module-orders.tests.test_models">
+<dt class="sig sig-object py" id="orders.tests.test_models.OrderItemModelTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">orders.tests.test_models.</span></span><span class="sig-name descname"><span class="pre">OrderItemModelTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/tests/test_models.html#OrderItemModelTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.tests.test_models.OrderItemModelTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.tests.test_models.OrderItemModelTest.test_create_order_item">
+<span class="sig-name descname"><span class="pre">test_create_order_item</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/orders/tests/test_models.html#OrderItemModelTest.test_create_order_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.tests.test_models.OrderItemModelTest.test_create_order_item" title="Link to this definition"></a></dt>
+<dd><p>Test that an order item can be created with valid order, product, name, price, quantity and created timestamp.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">full_clean</span></code> method is called to ensure that the order item is valid
+according to the model’s field definitions. The <code class="docutils literal notranslate"><span class="pre">save</span></code> method is then
+called to persist the order item to the database.</p>
+<p>The test then checks that the order item has been created with the expected
+order, product, name, price, quantity and created timestamp.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="orders.tests.test_models.OrderModelTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">orders.tests.test_models.</span></span><span class="sig-name descname"><span class="pre">OrderModelTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/orders/tests/test_models.html#OrderModelTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.tests.test_models.OrderModelTest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="orders.tests.test_models.OrderModelTest.test_create_order">
+<span class="sig-name descname"><span class="pre">test_create_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/orders/tests/test_models.html#OrderModelTest.test_create_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#orders.tests.test_models.OrderModelTest.test_create_order" title="Link to this definition"></a></dt>
+<dd><p>Test that an order can be created with valid user, created timestamp, phone number, requires delivery, delivery address, payment on get, is paid and status.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">full_clean</span></code> method is called to ensure that the order is valid
+according to the model’s field definitions. The <code class="docutils literal notranslate"><span class="pre">save</span></code> method is then
+called to persist the order to the database.</p>
+<p>The test then checks that the order has been created with the expected
+user, created timestamp, phone number, requires delivery, delivery address,
+payment on get, is paid and status.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main.html" class="btn btn-neutral float-left" title="Main Module Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="users.html" class="btn btn-neutral float-right" title="Users Module Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DanilaB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

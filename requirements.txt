@@ -10,3 +10,5 @@ django-debug-toolbar
 hypothesis
 waitress
 whitenoise
+sphinx
+sphinx_rtd_theme
