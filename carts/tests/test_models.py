@@ -16,6 +16,16 @@ class CartModelTest(HypothesisTestCase):
         created_timestamp=st.datetimes(timezones=st.timezones()),
     )
     def test_create_cart(self, user, product, quantity, session_key, created_timestamp):
+        """
+        Test that a cart can be created with valid user, product, quantity, session key and created timestamp.
+
+        The ``full_clean`` method is called to ensure that the cart is valid
+        according to the model's field definitions. The ``save`` method is then
+        called to persist the cart to the database.
+
+        The test then checks that the cart has been created with the expected
+        user, product, quantity, session key and created timestamp.
+        """
         cart = Cart(user=user, product=product, quantity=quantity, session_key=session_key, created_timestamp=created_timestamp)
         cart.full_clean()
         cart.save()

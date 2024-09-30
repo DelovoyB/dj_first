@@ -100,6 +100,14 @@ class ContactView(TemplateView):
     template_name = 'main/contact.html'
 
     def get_context_data(self, **kwargs):
+        """
+        Set the context data for the contact page.
+
+        Set the title of the page to "Contact us".
+
+        Returns:
+            dict: The context data for the contact page.
+        """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Contact us'
         return context
