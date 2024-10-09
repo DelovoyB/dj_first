@@ -12,3 +12,4 @@ waitress
 whitenoise
 sphinx
 sphinx_rtd_theme
+flake8
