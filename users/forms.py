@@ -25,7 +25,7 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('first_name','last_name','username', 'email', 'password1', 'password2')
+        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
 
 
 class ProfileForm(UserChangeForm):
@@ -35,6 +35,7 @@ class ProfileForm(UserChangeForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
     image = forms.ImageField(required=False)
+
     class Meta:
         model = User
         fields = ('image', 'first_name', 'last_name', 'username', 'email')

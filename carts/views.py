@@ -1,11 +1,8 @@
 from django.http import JsonResponse
-from django.template.loader import render_to_string
-from django.urls import reverse
 from django.views import View
 
 from carts.mixins import CartMixin
 from carts.models import Cart
-from carts.utils import get_user_carts
 from goods.models import Products
 
 
@@ -32,7 +29,8 @@ class CartAddView(CartMixin, View):
             cart.save()
         else:
             Cart.objects.create(user=request.user if request.user.is_authenticated else None,
-                                session_key=request.session.session_key if not request.user.is_authenticated else None,
+                                session_key=request.session.session_key if not request.user.is_authenticated
+                                else None,
                                 product=product, quantity=1)
 
         response_data = {

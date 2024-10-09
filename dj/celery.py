@@ -10,10 +10,10 @@ app.autodiscover_tasks()
 
 @app.task(bind=True, ignore_result=True)
 def debug_task(self):
-    """ 
-    A simple task that prints its request to the console. 
+    """
+    A simple task that prints its request to the console.
 
-    Useful for testing and debugging Celery configurations. 
+    Useful for testing and debugging Celery configurations.
 
     """
     print(f'Request: {self.request!r}')

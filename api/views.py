@@ -31,7 +31,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         """
         Override get_queryset to only return all users if the current user is staff
-        
+
         Otherwise, return an empty queryset.
         """
         queryset = super().get_queryset()

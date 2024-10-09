@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import include,path
+from django.urls import include, path
 
 from dj.settings import DEBUG
 import debug_toolbar

@@ -97,7 +97,7 @@ class CreateOrderView(LoginRequiredMixin, FormView):
         """
         If the form is invalid, redirect back to the checkout page with
         an error message.
-        """ 
+        """
         messages.error(self.request, 'Заполните все обязательные поля')
         return redirect('orders:create_order')
 

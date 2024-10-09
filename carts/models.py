@@ -12,7 +12,6 @@ class CartQueryset(models.QuerySet):
         """
         return sum(cart.products_price() for cart in self)
 
-
     def total_quantity(self):
         """
         Returns the total quantity of all items in the cart.
@@ -44,7 +43,7 @@ class Cart(models.Model):
         Returns:
             float: The total price of all items in the cart.
         """
-        return round(self.product.sell_price() * self.quantity,2)
+        return round(self.product.sell_price() * self.quantity, 2)
 
     def __str__(self):
         """
@@ -56,7 +55,7 @@ class Cart(models.Model):
 
         Returns:
             str: A string representation of the cart object.
-        """       
+        """
         if self.user:
             return f'Cart for {self.user.username} | Product {self.product.name} | Quantity {self.quantity}'
 

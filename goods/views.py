@@ -58,10 +58,10 @@ class CatalogView(ListView):
         """
         Returns a dictionary with the given keyword arguments and the following
         additional context variables:
-    
+
         *   title: The title of the page, which is 'Shop'.
         *   slug_url: The slug of the category given in the URL parameters.
-    
+
         Returns:
             dict: A dictionary with the additional context variables.
         """
@@ -79,10 +79,10 @@ class ProductView(CacheMixin, DetailView):
     def get_object(self, queryset=None):
         """
         Returns a Product object by slug from the URL parameters.
-        
+
         The product is retrieved from the cache if it exists, otherwise it is
         retrieved from the database and cached for 30 seconds.
-        
+
         Returns:
             Product: The product object with the given slug.
         """

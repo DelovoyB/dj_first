@@ -61,7 +61,7 @@ class UserLoginView(LoginView):
     def get_context_data(self, **kwargs):
         """
         Set the context data for the login page.
-    
+
         Set the title of the page to "Sign in".
         """
         context = super().get_context_data(**kwargs)
@@ -150,9 +150,9 @@ class UserProfileView(LoginRequiredMixin, CacheMixin, UpdateView):
     def get_context_data(self, **kwargs):
         """
         Set the context data for the user profile page.
-    
+
         The context data includes the page title, and the user's orders.
-    
+
         Returns:
             dict: The context data for the user profile page.
         """

@@ -10,6 +10,7 @@ class CartTabAdmin(admin.TabularInline):
     readonly_fields = ('created_timestamp',)
     extra = 1
 
+
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
 
@@ -25,7 +26,6 @@ class CartAdmin(admin.ModelAdmin):
         if obj.user:
             return obj.user
         return "Anonymous user"
-
 
     def product_display(self, obj):
         """

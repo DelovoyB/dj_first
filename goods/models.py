@@ -4,9 +4,9 @@ from django.urls import reverse
 
 # Create your models here.
 class Categories(models.Model):
-    name = models.CharField(max_length=150,unique=True)
-    slug = models.SlugField(max_length=200,unique=True,blank=True,null=True,verbose_name='URL')
-    
+    name = models.CharField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
+
     class Meta:
         db_table = 'category'
         ordering = ('id',)
@@ -16,7 +16,7 @@ class Categories(models.Model):
     def __str__(self):
         """
         Returns a string representation of the category object, which is its name.
-        
+
         Returns:
             str: The name of the category.
         """
@@ -43,7 +43,7 @@ class Products(models.Model):
         """
         Returns a string representation of the product object, which is its name
         followed by quantity.
-        
+
         Returns:
             str: The name of the product and the quantity.
         """
@@ -52,7 +52,7 @@ class Products(models.Model):
     def get_absolute_url(self):
         """
         Returns the URL of the product detail page as a string.
-        
+
         The URL is in the format of '/catalog/<product_slug>/' where <product_slug>
         is the slug of the product.
 
@@ -73,5 +73,5 @@ class Products(models.Model):
             float: The selling price of the product.
         """
         if self.discount > 0:
-            return round(self.price - (self.price * self.discount / 100),2)
+            return round(self.price - (self.price * self.discount / 100), 2)
         return self.price

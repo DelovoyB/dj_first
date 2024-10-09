@@ -87,7 +87,7 @@ class AboutView(TemplateView):
         Set the context data for the about page.
 
         Set the title of the page to "About us".
-        
+
         Returns:
             dict: The context data for the about page.
         """
