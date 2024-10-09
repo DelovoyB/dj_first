@@ -28,6 +28,14 @@ Carts Application
    :undoc-members:
    :show-inheritance:
 
+Carts Template Tags
+---------
+
+.. automodule:: carts.templatetags.carts_tags
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Carts Tests
 ---------
 

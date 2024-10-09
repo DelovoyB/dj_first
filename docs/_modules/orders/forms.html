@@ -90,16 +90,16 @@
     <span class="n">first_name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
     <span class="n">last_name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
     <span class="n">phone_number</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
-    <span class="n">requires_delivery</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),])</span>
+    <span class="n">requires_delivery</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),])</span>
     <span class="n">delivery_address</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">payment_on_get</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">),(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">),])</span>
+    <span class="n">payment_on_get</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">),])</span>
 
 <div class="viewcode-block" id="CreateOrderForm.clean_phone_number">
 <a class="viewcode-back" href="../../orders.html#orders.forms.CreateOrderForm.clean_phone_number">[docs]</a>
     <span class="k">def</span> <span class="nf">clean_phone_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validation for phone number field.</span>
-<span class="sd">    </span>
+
 <span class="sd">        Check that the phone number field contains only 10 digits and raise</span>
 <span class="sd">        ValidationError if not.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

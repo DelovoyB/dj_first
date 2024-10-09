@@ -97,7 +97,6 @@
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cart</span><span class="o">.</span><span class="n">products_price</span><span class="p">()</span> <span class="k">for</span> <span class="n">cart</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">)</span></div>
 
 
-
 <div class="viewcode-block" id="CartQueryset.total_quantity">
 <a class="viewcode-back" href="../../carts.html#carts.admin.CartQueryset.total_quantity">[docs]</a>
     <span class="k">def</span> <span class="nf">total_quantity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -137,7 +136,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            float: The total price of all items in the cart.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">product</span><span class="o">.</span><span class="n">sell_price</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">product</span><span class="o">.</span><span class="n">sell_price</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></div>
 
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -150,7 +149,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: A string representation of the cart object.</span>
-<span class="sd">        &quot;&quot;&quot;</span>       
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">:</span>
             <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Cart for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s1"> | Product </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> | Quantity </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">quantity</span><span class="si">}</span><span class="s1">&#39;</span>
 

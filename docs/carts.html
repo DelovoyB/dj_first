@@ -111,6 +111,10 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#carts-template-tags">Carts Template Tags</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#carts.templatetags.carts_tags.user_carts"><code class="docutils literal notranslate"><span class="pre">user_carts()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#carts-tests">Carts Tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#carts.tests.test_models.CartModelTest"><code class="docutils literal notranslate"><span class="pre">CartModelTest</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#carts.tests.test_models.CartModelTest.test_create_cart"><code class="docutils literal notranslate"><span class="pre">CartModelTest.test_create_cart()</span></code></a></li>
@@ -459,6 +463,21 @@ JSON response with a message, the quantity of the deleted item, and the
 HTML of the updated cart items.</p>
 </dd></dl>
 
+</dd></dl>
+
+</section>
+<section id="carts-template-tags">
+<h2>Carts Template Tags<a class="headerlink" href="#carts-template-tags" title="Link to this heading"></a></h2>
+<dl class="py function" id="module-carts.templatetags.carts_tags">
+<dt class="sig sig-object py" id="carts.templatetags.carts_tags.user_carts">
+<span class="sig-prename descclassname"><span class="pre">carts.templatetags.carts_tags.</span></span><span class="sig-name descname"><span class="pre">user_carts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/carts/templatetags/carts_tags.html#user_carts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#carts.templatetags.carts_tags.user_carts" title="Link to this definition"></a></dt>
+<dd><p>Template tag to get a user’s carts.</p>
+<p>This tag takes a request object and returns a QuerySet of Cart objects related to the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QuerySet of Cart objects</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

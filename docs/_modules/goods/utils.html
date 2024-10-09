@@ -79,7 +79,6 @@
              
   <h1>Source code for goods.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">django.contrib.postgres.search</span> <span class="kn">import</span> <span class="n">SearchVector</span><span class="p">,</span> <span class="n">SearchQuery</span><span class="p">,</span> <span class="n">SearchRank</span><span class="p">,</span> <span class="n">SearchHeadline</span>
-<span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">Q</span>
 
 <span class="kn">from</span> <span class="nn">goods.models</span> <span class="kn">import</span> <span class="n">Products</span>
 
@@ -105,13 +104,21 @@
 
     <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">SearchRank</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">query</span><span class="p">))</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">rank__gt</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-rank&#39;</span><span class="p">))</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">headline</span><span class="o">=</span><span class="n">SearchHeadline</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">start_sel</span><span class="o">=</span><span class="s1">&#39;&lt;span style=&quot;background-color: yellow;&quot;&gt;&#39;</span><span class="p">,</span> <span class="n">stop_sel</span><span class="o">=</span><span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">))</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">bodyline</span><span class="o">=</span><span class="n">SearchHeadline</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">start_sel</span><span class="o">=</span><span class="s1">&#39;&lt;span style=&quot;background-color: yellow;&quot;&gt;&#39;</span><span class="p">,</span> <span class="n">stop_sel</span><span class="o">=</span><span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">headline</span><span class="o">=</span><span class="n">SearchHeadline</span><span class="p">(</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">,</span>
+        <span class="n">start_sel</span><span class="o">=</span><span class="s1">&#39;&lt;span style=&quot;background-color: yellow;&quot;&gt;&#39;</span><span class="p">,</span>
+        <span class="n">stop_sel</span><span class="o">=</span><span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">bodyline</span><span class="o">=</span><span class="n">SearchHeadline</span><span class="p">(</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">,</span>
+        <span class="n">start_sel</span><span class="o">=</span><span class="s1">&#39;&lt;span style=&quot;background-color: yellow;&quot;&gt;&#39;</span><span class="p">,</span>
+        <span class="n">stop_sel</span><span class="o">=</span><span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">result</span></div>
 
 
-    <span class="c1">### search v1</span>
+    <span class="c1"># search v1</span>
 
     <span class="c1"># keywords = [word for word in query.split() if len(word) &gt; 2]</span>
     <span class="c1">#</span>

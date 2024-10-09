@@ -145,10 +145,10 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a dictionary with the given keyword arguments and the following</span>
 <span class="sd">        additional context variables:</span>
-<span class="sd">    </span>
+
 <span class="sd">        *   title: The title of the page, which is &#39;Shop&#39;.</span>
 <span class="sd">        *   slug_url: The slug of the category given in the URL parameters.</span>
-<span class="sd">    </span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: A dictionary with the additional context variables.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -172,10 +172,10 @@
     <span class="k">def</span> <span class="nf">get_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a Product object by slug from the URL parameters.</span>
-<span class="sd">        </span>
+
 <span class="sd">        The product is retrieved from the cache if it exists, otherwise it is</span>
 <span class="sd">        retrieved from the database and cached for 30 seconds.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            Product: The product object with the given slug.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
