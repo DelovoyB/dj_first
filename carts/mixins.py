@@ -30,7 +30,7 @@ class CartMixin:
         if cart_id:
             query_kwargs['id'] = cart_id
 
-        return Cart.objects.filter(**query_kwargs).first()
+        return Cart.objects.filter(**query_kwargs).select_related('user', 'product').first()
 
     def render_cart(self, request):
         """

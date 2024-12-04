@@ -49,13 +49,13 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
 @method_decorator(cache_page(30), name='dispatch')
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Products.objects.all()
+    queryset = Products.objects.select_related('category').all()
     serializer_class = ProductSerializer
     lookup_field = 'slug'
 
 
 @method_decorator(cache_page(30), name='dispatch')
 class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
+    queryset = Order.objects.select_related('user').all()
     serializer_class = OrderSerializer
     lookup_field = 'id'

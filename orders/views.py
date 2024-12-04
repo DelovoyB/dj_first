@@ -6,7 +6,7 @@ from django.forms import ValidationError
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 
-from .tasks import send_order_email
+from .tasks import send_order_email, task1
 
 from carts.models import Cart
 from orders.forms import CreateOrderForm
@@ -53,7 +53,7 @@ class CreateOrderView(LoginRequiredMixin, FormView):
         try:
             with transaction.atomic():
                 user = self.request.user
-                cart = Cart.objects.filter(user=user)
+                cart = Cart.objects.filter(user=user).select_related('product')
 
                 order = Order.objects.create(
                     user=user,
@@ -86,7 +86,7 @@ class CreateOrderView(LoginRequiredMixin, FormView):
                     cart_item.delete()
 
                 messages.success(self.request, 'Заказ успешно оформлен')
-                transaction.on_commit(lambda: send_order_email(order.id, user.email))
+                transaction.on_commit(lambda: task1())
                 return redirect('user:profile')
 
         except ValidationError as error:

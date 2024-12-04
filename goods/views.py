@@ -38,11 +38,11 @@ class CatalogView(ListView):
         query = self.request.GET.get('q')
 
         if category_slug == 'all':
-            goods = super().get_queryset()
+            goods = super().get_queryset().select_related('category')
         elif query:
             goods = q_search(query)
         else:
-            goods = super().get_queryset().filter(category__slug=category_slug)
+            goods = super().get_queryset().filter(category__slug=category_slug).select_related('category')
             if not goods.exists():
                 raise Http404()
 
@@ -88,7 +88,7 @@ class ProductView(CacheMixin, DetailView):
         """
         product = self.set_get_cache_fn(
             f'goods_product_{self.kwargs['product_slug']}',
-            lambda: Products.objects.get(slug=self.kwargs['product_slug']),
+            lambda: Products.objects.select_related('category').get(slug=self.kwargs["product_slug"]),
             30
         )
         return product
