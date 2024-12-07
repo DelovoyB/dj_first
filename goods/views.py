@@ -1,9 +1,14 @@
+import logging
 from django.http import Http404
 from django.views.generic import DetailView, ListView
 
 from common.mixins import CacheMixin
 from goods.models import Products
 from goods.utils import q_search
+
+from .signals import product_list_viewed, product_detail_viewed
+
+logger = logging.getLogger('goods')
 
 
 class CatalogView(ListView):
@@ -41,9 +46,13 @@ class CatalogView(ListView):
             goods = super().get_queryset().select_related('category')
         elif query:
             goods = q_search(query)
+            if not goods.exists():
+                logger.warning(f"Page not found: {self.request.path}?q={query} by user {self.request.user}")
+                raise Http404()
         else:
             goods = super().get_queryset().filter(category__slug=category_slug).select_related('category')
             if not goods.exists():
+                logger.warning(f"Page not found: {self.request.path} by user {self.request.user}")
                 raise Http404()
 
         if on_sale:
@@ -51,6 +60,12 @@ class CatalogView(ListView):
 
         if order_by and order_by != 'default':
             goods = goods.order_by(order_by)
+
+        product_list_viewed.send(
+            sender=self.__class__,
+            user=self.request.user,
+            filters=query if query else category_slug,
+        )
 
         return goods
 
@@ -72,7 +87,6 @@ class CatalogView(ListView):
 
 
 class ProductView(CacheMixin, DetailView):
-
     template_name = 'goods/product.html'
     context_object_name = 'product'
 
@@ -86,12 +100,28 @@ class ProductView(CacheMixin, DetailView):
         Returns:
             Product: The product object with the given slug.
         """
-        product = self.set_get_cache_fn(
-            f'goods_product_{self.kwargs['product_slug']}',
-            lambda: Products.objects.select_related('category').get(slug=self.kwargs["product_slug"]),
-            30
-        )
-        return product
+        try:
+            product = self.set_get_cache_fn(
+                f'goods_product_{self.kwargs["product_slug"]}',
+                lambda: Products.objects.select_related('category').get(slug=self.kwargs["product_slug"]),
+                30
+            )
+
+            product_detail_viewed.send(
+                sender=self.__class__,
+                user=self.request.user,
+                product=product,
+            )
+            return product
+
+        except Products.DoesNotExist:
+            product_detail_viewed.send(
+                sender=self.__class__,
+                user=self.request.user,
+                product=None,
+                path=self.request.path
+            )
+            raise Http404()
 
     def get_context_data(self, **kwargs):
         """

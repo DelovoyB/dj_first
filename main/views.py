@@ -4,6 +4,8 @@ from django.views.generic import TemplateView, ListView
 from common.mixins import CacheMixin
 from goods.models import Products
 
+from .signals import page_viewed
+
 
 class IndexView(CacheMixin, ListView):
     template_name = 'main/index.html'
@@ -76,6 +78,7 @@ class IndexView(CacheMixin, ListView):
         context['special1'] = self.special1
         context['special2'] = self.special2
         context['special3'] = self.special3
+        page_viewed.send(sender=None, request=self.request)
         return context
 
 
@@ -93,6 +96,7 @@ class AboutView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'About us'
+        page_viewed.send(sender=None, request=self.request)
         return context
 
 
@@ -110,6 +114,7 @@ class ContactView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Contact us'
+        page_viewed.send(sender=None, request=self.request)
         return context
 
 
@@ -127,6 +132,7 @@ class FaqView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'FAQ'
+        page_viewed.send(sender=None, request=self.request)
         return context
 
 
@@ -141,4 +147,7 @@ def handle404(request, exception):
     Returns:
         Response: The rendered 404.html template with a status code of 404.
     """
-    return render(request, 'main/404.html', status=404)
+    context = {
+        'title': 'Page Not Found'
+    }
+    return render(request, 'main/404.html', context=context, status=404)

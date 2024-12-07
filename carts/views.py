@@ -21,9 +21,7 @@ class CartAddView(CartMixin, View):
         """
         product_id = request.POST.get("product_id")
         product = Products.objects.get(id=product_id)
-
         cart = self.get_cart(request, product=product)
-
         if cart:
             cart.quantity += 1
             cart.save()

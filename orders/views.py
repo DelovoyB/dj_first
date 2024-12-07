@@ -1,3 +1,4 @@
+import logging
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
@@ -6,11 +7,14 @@ from django.forms import ValidationError
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 
-from .tasks import send_order_email, task1
+from .tasks import send_order_email, task1 # noqa
+from .signals import order_was_created
 
 from carts.models import Cart
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
+
+logger = logging.getLogger('orders')
 
 
 class CreateOrderView(LoginRequiredMixin, FormView):
@@ -85,12 +89,12 @@ class CreateOrderView(LoginRequiredMixin, FormView):
 
                     cart_item.delete()
 
-                messages.success(self.request, 'Заказ успешно оформлен')
-                transaction.on_commit(lambda: task1())
+                order_was_created.send(sender=Order, order=order)
+                transaction.on_commit(lambda: task1(order.id, user.email))
                 return redirect('user:profile')
 
         except ValidationError as error:
-            messages.warning(self.request, error.message)
+            logger.error(f"Failed to process order for user {self.request.user.username}: {error}", exc_info=True)
             return redirect('orders:create_order')
 
     def form_invalid(self, form):

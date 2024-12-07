@@ -1,3 +1,4 @@
+import logging
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -12,6 +13,8 @@ from carts.models import Cart
 from common.mixins import CacheMixin
 from orders.models import Order, OrderItem
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
+
+logger = logging.getLogger('users')
 
 
 class UserLoginView(LoginView):
@@ -55,6 +58,7 @@ class UserLoginView(LoginView):
             auth.login(self.request, user)
             if session_key:
                 Cart.objects.filter(session_key=session_key).update(user=user)
+                logger.info(f'User {user.username} logged in')
                 messages.success(self.request, f'Вы успешно вошли в аккаунт {user.username}')
                 return HttpResponseRedirect(self.get_success_url())
 
@@ -101,6 +105,7 @@ class UserRegistrationView(CreateView):
             auth.login(self.request, user)
         if session_key:
             Cart.objects.filter(session_key=session_key).update(user=user)
+        logger.info(f'User {user.username} registered')
         messages.success(self.request, f'Вы успешно зарегистрировались {user.username}')
         return HttpResponseRedirect(self.success_url)
 
@@ -136,6 +141,7 @@ class UserProfileView(LoginRequiredMixin, CacheMixin, UpdateView):
         If the form is valid, send a success message to the user and call the
         form_valid method of the parent class to update the user profile.
         """
+        logger.info(f'User {self.request.user.username} updated profile')
         messages.success(self.request, 'Профиль обновлен')
         return super().form_valid(form)
 
@@ -144,6 +150,7 @@ class UserProfileView(LoginRequiredMixin, CacheMixin, UpdateView):
         If the form is invalid, send an error message to the user and redirect
         back to the profile page with the invalid form.
         """
+        logger.warning(f'User {self.request.user.username} failed to update profile')
         messages.error(self.request, 'Профиль не обновлен')
         return super().form_invalid(form)
 
@@ -165,7 +172,7 @@ class UserProfileView(LoginRequiredMixin, CacheMixin, UpdateView):
                 )).order_by("-id")
 
         context['orders'] = self.set_get_cache(orders, f'user_{self.request.user.id}_orders', 60)
-
+        logger.info(f"{self.request.user.username}'s orders are cached")
         return context
 
 
@@ -201,6 +208,7 @@ def logout(request):
     After logging out, a success message is sent to the user,
     and they are redirected to the main page.
     """
+    logger.info(f'User {request.user.username} logged out')
     messages.success(request, 'Вы вышли из аккаунта')
     auth.logout(request)
     return redirect(reverse('main:index'))
