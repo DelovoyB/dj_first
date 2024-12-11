@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 from pathlib import Path
 
@@ -48,6 +48,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
+    'axes',
+
     # 'debug_toolbar',
 
     'main',
@@ -69,8 +71,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'dj.middleware.ErrorLoggingMiddleware',
+    'axes.middleware.AxesMiddleware',
 
     # "debug_toolbar.middleware.DebugToolbarMiddleware",
+]
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',  # Axes backend for tracking login attempts
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
 ]
 
 ROOT_URLCONF = 'dj.urls'
@@ -254,3 +262,11 @@ LOGGING = {
         },
     },
 }
+
+AXES_FAILURE_LIMIT = 5  # Number of failed attempts before locking out
+AXES_COOLOFF_TIME = timedelta(minutes=15)  # Lockout duration
+AXES_LOCK_OUT_ON_FAILURE = True  # Lock account after failure
+AXES_RESET_ON_SUCCESS = True  # Reset after successful login
+AXES_LOCKOUT_CALLABLE = 'dj.utils.custom_lockout_response'
+AXES_NEVER_LOCKOUT_GET = True
+AXES_USER_ACCESS = True

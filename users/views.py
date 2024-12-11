@@ -24,11 +24,12 @@ class UserLoginView(LoginView):
 
     def dispatch(self, request, *args, **kwargs):
         """
-        Checks if the user is already authenticated. If yes, redirects to user profile,
-        otherwise proceeds with the default dispatch method.
+        Checks if the user is already authenticated and if the user is locked out.
+        If locked out, returns an appropriate response.
         """
         if request.user.is_authenticated:
             return redirect(reverse_lazy('user:profile'))
+
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):

@@ -1,5 +1,7 @@
 import logging
 
+from django.http import JsonResponse
+
 
 def log_action(logger_name: str, level: str, message: str, **kwargs):
     """
@@ -31,3 +33,17 @@ def log_action(logger_name: str, level: str, message: str, **kwargs):
         logger.critical(message)
     else:
         logger.info(f"Unknown level '{level}' provided. Defaulting to INFO: {message}")
+
+
+def custom_lockout_response(request, *args, **kwargs):
+    """
+    Custom response for locked-out users. It shows a clear message to the user.
+    """
+    logger = logging.getLogger('django')
+    client_ip = request.META.get('REMOTE_ADDR', 'unknown')
+    username = request.POST.get('username', 'unknown')
+    # Log the lockout event
+    logger.warning(f"User '{username}' has been locked out. IP: {client_ip}")
+    return JsonResponse({
+        "error": "Too many failed login attempts. Please try again later."
+    }, status=403)
