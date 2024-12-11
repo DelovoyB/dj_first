@@ -8,4 +8,4 @@ media/
 db.sqlite3
 .env
 .hypothesis
-logs/**
+logs/

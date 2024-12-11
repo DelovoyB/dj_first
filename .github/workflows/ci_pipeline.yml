@@ -40,6 +40,9 @@ jobs:
         sudo chmod +x /usr/local/bin/docker-compose
         docker-compose --version
 
+    - name: Set up logs directory
+      run: mkdir -p /app/logs
+
     - name: Set up Docker Compose
       run: |
         docker-compose -f docker-compose.yml up -d postgres redis
