@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/
 
-RUN mkdir -p /app/logs
+RUN mkdir -p /app/logs && chmod -R 755 /app/logs
 
 EXPOSE 8000
 
