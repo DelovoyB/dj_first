@@ -14,7 +14,7 @@ class UserViewSetTest(TestCase):
         self.client = APIClient()
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.admin_user = User.objects.create_superuser(username='adminuser', password='adminpassword')
-        self.client.login(username='testuser', password='testpassword')
+        self.client.force_login(self.user)
 
     def test_list_users_authenticated(self):       
         """
@@ -36,7 +36,7 @@ class UserViewSetTest(TestCase):
         """
         Test that an admin user can retrieve the details of any user if they are authenticated
         """
-        self.client.login(username='adminuser', password='adminpassword')
+        self.client.force_login(self.admin_user)
         response = self.client.get(reverse('api:user-detail', kwargs={'pk': self.user.id}))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['username'], self.user.username)
@@ -54,7 +54,7 @@ class UserViewSetTest(TestCase):
         Test that only an admin user can create a new user
         """
         self.client.logout()
-        self.client.login(username='adminuser', password='adminpassword')
+        self.client.force_login(self.admin_user)
 
         data = {
             'username': 'newuser',
@@ -80,7 +80,7 @@ class UserViewSetTest(TestCase):
         Test that only an admin user can update a user
         """        
         self.client.logout()
-        self.client.login(username='adminuser', password='adminpassword')
+        self.client.force_login(self.admin_user)
 
         data = {
             'username': 'updateduser'
@@ -105,7 +105,7 @@ class UserViewSetTest(TestCase):
         Test that only an admin user can delete a user
         """       
         self.client.logout()
-        self.client.login(username='adminuser', password='adminpassword')
+        self.client.force_login(self.admin_user)
 
         response = self.client.delete(reverse('api:user-detail', kwargs={'pk': self.user.id}))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
